@@ -3,7 +3,7 @@
 
 
 /**
- * Name getEndpoint()
+ * getEndpoint()
  *
  * It takes the URL and returns an array with the endpoint and value
  *
@@ -27,7 +27,7 @@ use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
 /**
- * Name generateJWT()
+ * generateJWT()
  *
  * It generates a JWT token.
  *
@@ -64,7 +64,7 @@ function readJWT($jwt)
 
 
 /**
- * Name pprint()
+ * pprint()
  *
  * The function takes two arguments, the first is the data to be printed, the second is an optional
  * name for the data
@@ -86,7 +86,7 @@ function pprint($data, $name = '')
 
 
 /**
- * Name console
+ * console()
  *
  * It takes an object, converts it to JSON, and prints it to the console
  *

@@ -9,6 +9,12 @@ require __DIR__ . '/functions.php';
 
 
 
+/**
+ *  $endpoint = getEndpoint()
+ *
+ *  Calling the function `getEndpoint()` and assigning the return value to the variable ``.
+ *
+ */
 $array = getEndpoint();
 pprint($array, 'Endpoint');
 
@@ -21,6 +27,17 @@ $payload = [
     'nbf' => 11
 ];
 
+/**
+ * $jwt = generateJWT()
+ *
+ * Generating a JWT token.
+ */
 $jwt = generateJWT($payload);
+
+/**
+ * $user = readJWT()
+ *
+ * Reading the JWT and returning the user object.
+ */
 $user = readJWT($jwt);
 pprint($user, 'User');
