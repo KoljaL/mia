@@ -2,7 +2,6 @@
 
 ## PHP folder for API requests, SQLite Database file and uploaded files
 
-## [Structure](https://htmlpreview.github.io/?https://github.com/KoljaL/mia/blob/main/mia/APIstructure.html)
 
 ## installed packages
 
