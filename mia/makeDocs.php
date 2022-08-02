@@ -68,9 +68,15 @@ foreach ($files as $file) {
                     $line = trim($line);
 
                     // add markdown
-                    $line = (substr($line, 0, 6) === "@param") ? str_replace('@param', '*param*', $line) : $line;
-                    $line = (substr($line, 0, 7) === "@return") ? str_replace('@return', '*return*', $line) : $line;
-                    $line = (substr($line, -1) === ")") ? PHP_EOL.'### '.$line : $line;
+                    if (substr($line, 0, 6) === "@param") {
+                        $line = str_replace('@param', '**param**', $line);
+                        $line =  preg_replace('/ /', ' ` ', $line, 2);
+                    }
+                    if (substr($line, 0, 7) === "@return") {
+                        $line =  str_replace('@return', '**return**', $line);
+                        $line =  preg_replace('/ /', ' ` ', $line, 2);
+                    }
+                    $line = (substr($line, -1) === ")") ? PHP_EOL.'### `'.$line.'`' : $line;
 
                     // collect all lines
                     $markdown .= $line.'  '.PHP_EOL;
@@ -104,7 +110,12 @@ main{
   height:100%;
   padding:1em;
   color: #adbac7;
-  background: #2d333b;
+  background: rgb(34, 39, 46);
+}
+code{
+  background: rgba(99, 110, 123, 0.4);
+  border-radius: 3px;
+  padding:2px;
 }
 </style>
 <main id=main></main>
