@@ -12,7 +12,7 @@ require __DIR__ . '/functions.php';
 /**
  *  $endpoint = getEndpoint()
  *
- *  Calling the function `getEndpoint()` and assigning the return value to the variable ``.
+ *  Calling the function `getEndpoint()` and assigning the return value to the variable.
  *
  */
 $array = getEndpoint();
