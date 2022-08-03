@@ -21,14 +21,14 @@ class AdminerLoginPasswordLess
 
     public function credentials()
     {
-        $password = "YOUR_PASSWORD_HERE"; //get_password();
+        $password = get_password();
         return array(SERVER, $_GET["username"], (password_verify($password, $this->password_hash) ? "" : $password));
     }
 
     public function login($login, $password)
     {
+        return true;
         if ($password != "") {
-            return true;
         }
     }
 }
