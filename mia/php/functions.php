@@ -7,16 +7,16 @@
  *
  * It takes the URL and returns an array with the endpoint and value
  *
- * @return An array with the endpoint, value, and value_1.
+ * @return array with the endpoint, value, and value_1.
  */
 function getEndpoint()
 {
     $uri          = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $uri          = explode('/', $uri);
     $api          = array_search('mia', $uri);
-    $array['endpoint'] = (isset($uri[$api + 1])) ? $uri[$api + 1] : '';
+    $array['endpoint'] = (isset($uri[$api + 1])) ? $uri[$api + 1] : 'login';
     $array['value']    = (isset($uri[$api + 2])) ? $uri[$api + 2] : '';
-    $array['value_1']    = (isset($uri[$api + 3])) ? $uri[$api + 3] : '';
+    $array['value_1']  = (isset($uri[$api + 3])) ? $uri[$api + 3] : '';
     return $array;
 }
 
@@ -27,13 +27,13 @@ use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
 /**
- * generateJWT()
+ * generateJWT($payload)
  *
  * It generates a JWT token.
  *
  * @param payload The payload is the data that you want to send to the client.
  *
- * @return A JWT token
+ * @return string A JWT token
  */
 function generateJWT($payload)
 {
@@ -44,13 +44,13 @@ function generateJWT($payload)
 
 
 /**
- * Name readJWT()
+ * Name readJWT($jwt)
  *
  * It takes a JWT and returns an array of the data in the JWT
  *
  * @param jwt The JWT to decode.
  *
- * @return An array of the decoded JWT.
+ * @return array of the decoded JWT.
  */
 function readJWT($jwt)
 {
@@ -64,7 +64,7 @@ function readJWT($jwt)
 
 
 /**
- * pprint()
+ * pprint($data, $name)
  *
  * The function takes two arguments, the first is the data to be printed, the second is an optional
  * name for the data
@@ -86,7 +86,7 @@ function pprint($data, $name = '')
 
 
 /**
- * console()
+ * console($obj)
  *
  * It takes an object, converts it to JSON, and prints it to the console
  *
@@ -94,6 +94,31 @@ function pprint($data, $name = '')
  */
 function console($obj)
 {
-    $js = json_encode($obj);
-    print_r('<script>console.log('.$js.')</script>');
+    print_r('<script>console.log('.json_encode($obj).')</script>');
+}
+
+
+
+$GLOBAL['_logged_php_errors'] = array();
+
+// error_reporting(0);
+
+set_error_handler('phpLogError');
+
+function phpLogError()
+{
+    global $_logged_php_errors;
+
+    $error = error_get_last();
+
+    if ($error['type'] == 1) {
+        $_logged_php_errors[] = "<span>$error</span>";
+    }
+}
+
+function phpGetLoggedErrors()
+{
+    global $_logged_php_errors;
+
+    return "<ol><li>".implode('</li><li>', $_logged_php_errors)."</li></ol>";
 }

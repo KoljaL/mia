@@ -1,6 +1,15 @@
 # MIA
 
-## PHP folder for API requests, SQLite Database file and uploaded files
+PHP folder for API requests, SQLite Database file and uploaded files
+
+## todo
+- [x] get endpoint & id
+- [ ] get request method
+- [x] create & read JWT
+- [ ] backup
+- [ ] adminer
+
+
 
 
 ## installed packages
