@@ -39,8 +39,13 @@ function adminer_object()
 
     return new AdminerCustomization($plugins);
 }
+
+
+require __DIR__ . '/../config.php';
+
+
 $_GET['sqlite']='';
-$_GET['db']='../../db/test.sqlite';
+$_GET['db']='../../db/'.$conf['DB_filename'];
 
 
 include "adminer.php";

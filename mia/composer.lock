@@ -4,8 +4,51 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6cf046b2ebd2a9dc9acdc09bfa204a0",
+    "content-hash": "79a36fb1fa2c00be262ac5cbe3433083",
     "packages": [
+        {
+            "name": "benmajor/redseed",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/benmajor/RedSeed.git",
+                "reference": "23081a579ec5b29f80205a682f9699ae42907260"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/benmajor/RedSeed/zipball/23081a579ec5b29f80205a682f9699ae42907260",
+                "reference": "23081a579ec5b29f80205a682f9699ae42907260",
+                "shasum": ""
+            },
+            "require": {
+                "gabordemooij/redbean": "*",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BenMajor\\RedSeed\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Major",
+                    "email": "ben.major88@gmail.com",
+                    "homepage": "https://github.com/benmajor/RedSeed"
+                }
+            ],
+            "description": "RedBeanPHP ORM",
+            "homepage": "https://github.com/benmajor/RedSeed",
+            "support": {
+                "issues": "https://github.com/benmajor/RedSeed/issues",
+                "source": "https://github.com/benmajor/RedSeed/tree/1.0.1"
+            },
+            "time": "2020-08-18T09:34:47+00:00"
+        },
         {
             "name": "firebase/php-jwt",
             "version": "v6.3.0",

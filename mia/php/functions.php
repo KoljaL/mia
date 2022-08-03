@@ -1,5 +1,17 @@
 <?php
 
+/*
+ * Error handeling
+ */
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+ini_set("log_errors", 1);
+if (is_file('./error.log')) {
+    unlink('./error.log');
+}
+ini_set("error_log", "./error.log");
+$start = microtime(true);
 
 
 /**
@@ -21,8 +33,31 @@ function getEndpoint()
 }
 
 
-// JWT
 
+
+/**
+ * parseRequest()
+ *
+ * It takes the request body and returns an associative array of the request parameters
+ *
+ * @return array the request.
+ */
+function parseRequest()
+{
+    $request = json_decode(file_get_contents('php://input'), true);
+    if ($request) {
+        $keys = preg_replace('/[^a-z0-9_]+/i', '', array_keys($request));
+    } else {
+        $request = $_POST;
+    }
+    return $request;
+}
+
+
+
+//
+// JWT namespace
+//
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
@@ -99,26 +134,9 @@ function console($obj)
 
 
 
-$GLOBAL['_logged_php_errors'] = array();
+//
+// maybe usefull
+//
 
-// error_reporting(0);
-
-set_error_handler('phpLogError');
-
-function phpLogError()
-{
-    global $_logged_php_errors;
-
-    $error = error_get_last();
-
-    if ($error['type'] == 1) {
-        $_logged_php_errors[] = "<span>$error</span>";
-    }
-}
-
-function phpGetLoggedErrors()
-{
-    global $_logged_php_errors;
-
-    return "<ol><li>".implode('</li><li>', $_logged_php_errors)."</li></ol>";
-}
+// pprint(get_declared_classes(),'get_declared_classes);
+// pprint(sys_get_temp_dir(), 'sys_get_temp_dir');
