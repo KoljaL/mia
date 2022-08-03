@@ -30,6 +30,12 @@ switch ($url['endpoint']) {
     default:
         if (file_exists('endpoints/'.$url['endpoint'].'.php')) {
 
+            // get paramf from json or POST
+
+            // make DB connection
+
+
+
             // verify JWT from barier and get user properties
             $jwt ='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZXhhbXBsZS5vcmciLCJhdWQiOiJodHRwOi8vZXhhbXBsZS5jb20iLCJpYXQiOjEzNTY5OTk1MjQsIm5iZiI6MTF9.SXaiJ9tLgtY9DG-uECFvsTecew780YqFnWXRJpALZD8';
             $user = readJWT($jwt);
