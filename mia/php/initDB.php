@@ -8,23 +8,36 @@ require_once 'config.php';
 use RedBeanPHP\R as R;
 
 R::setup('sqlite:../db/'.$conf['DB_filename']);
-R::nuke();
+// R::nuke();
+// R::fancyDebug(true);
+R::freeze(true);
+
+
+
 // $book = R::dispense("book");
 // $book->author = "Santa Claus";
 // $book->title = "Secrets of Christmas";
 // $id = R::store($book);
 
 
+
+
+$admin = R::load('users', '2');
+if (!$admin['login']) {
+    $users = R::dispense('users');
+    $users['login'] = 'admin';
+    $users['password'] = password_hash('123', PASSWORD_DEFAULT);
+    $id = R::store($users);
+}
+
+
+
+// exit;
+//
+// DUMMY CONTENT
+//
+
 class_exists('BenMajor\\RedSeed\\RedSeed');
-
-// // $users = R::seed('user', 10, [
-//   'forename' => 'word(3,10)',
-//   'surname' => 'word(5,15)',
-//   'email' => 'email()'
-// ]);
-
-
-
 R::seed('staff', 10, [
   'forename' => 'nameDE()',
   'surname' => 'lastnameDE(10,15)',
@@ -51,3 +64,11 @@ R::seed('staff', 10, [
       ]);
   }
 ]);
+
+
+pprint(microtime(true)-$start);
+
+
+$time = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
+
+echo "Did nothing in $time seconds\n";

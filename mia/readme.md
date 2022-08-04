@@ -7,7 +7,7 @@ PHP folder for API requests, SQLite Database file and uploaded files
 - [ ] get request method
 - [x] create & read JWT
 - [ ] backup
-- [ ] adminer
+- [x] adminer
 
 
 
@@ -26,3 +26,5 @@ PHP folder for API requests, SQLite Database file and uploaded files
 - https://stackoverflow.com/questions/359047/detecting-request-type-in-php-get-post-put-or-delete
 - https://www.techfry.com/php-tutorial/how-to-get-url-of-current-page-in-php?v=amp
 - https://sodocumentation.net/php/topic/10847/how-to-break-down-an-url
+- https://stackoverflow.com/questions/70291849/adminer-autologin
+- https://github.com/sepkhanyan/custom-mvc/blob/main/public/index.php

@@ -1,11 +1,8 @@
 <?php
 
-// timemeasurerment
-// error logging switchable
-
-require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/php/config.php';
 require __DIR__ . '/php/functions.php';
+require __DIR__ . '/vendor/autoload.php';
 
 
 //

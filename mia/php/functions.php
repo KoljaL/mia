@@ -1,8 +1,8 @@
 <?php
 
-/*
- * Error handeling
- */
+//
+// Error handeling
+//
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -16,16 +16,16 @@ $start = microtime(true);
 
 /**
  * getEndpoint()
- *
- * It takes the URL and returns an array with the endpoint and value
- *
- * @return array with the endpoint, value, and value_1.
- */
+*
+* It takes the URL and returns an array with the endpoint and value
+*
+* @return array with the endpoint, value, and value_1.
+*/
 function getEndpoint()
 {
-    $uri          = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    $uri          = explode('/', $uri);
-    $api          = array_search('mia', $uri);
+    $uri               = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $uri               = explode('/', $uri);
+    $api               = array_search('mia', $uri);
     $array['endpoint'] = (isset($uri[$api + 1])) ? $uri[$api + 1] : 'login';
     $array['value']    = (isset($uri[$api + 2])) ? $uri[$api + 2] : '';
     $array['value_1']  = (isset($uri[$api + 3])) ? $uri[$api + 3] : '';
@@ -106,7 +106,7 @@ function readJWT($jwt)
  *
  * @param data The data to be printed.
  * @param name The name of the variable you're printing.
- */
+*/
 function pprint($data, $name = '')
 {
     print '<div style="width:max-content; background:#ccc;padding-inline:.25em;margin:.5em;">';

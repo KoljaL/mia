@@ -1,3 +1,6 @@
-mia/.DS_Store
+**/.DS_Store
+.DS_Store
+.AppleDouble
+.LSOverride
 mia/vendor/*
 mia/config.php

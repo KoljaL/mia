@@ -1,10 +1,13 @@
 <?php
 
+
+// startfolder (relative)
+$startfolder = '../';
 // name of Docfile
 $docfile = 'APIdocs.md';
 
 // files and folders to exclude from scraping
-$exclude = array('makeDocs.php', 'config.php','./vendor');
+$exclude = array('makeDocs.php', 'config.php','./vendor','adminer');
 
 // file extensions to scrape
 $extensions = array('php');
@@ -13,7 +16,7 @@ $extensions = array('php');
 
 // scan for php files
 $files = [];
-$o_dir = new RecursiveDirectoryIterator('.');
+$o_dir = new RecursiveDirectoryIterator($startfolder);
 $o_iter = new RecursiveIteratorIterator($o_dir);
 foreach ($o_iter as $o_info) {
     $pathname = $o_info->getPathname();
@@ -44,7 +47,7 @@ foreach ($files as $file) {
 
         $markdown .= " ".PHP_EOL;
         $markdown .= " ".PHP_EOL;
-        $markdown .= "## ".str_replace('./', '', $file).PHP_EOL;
+        $markdown .= "## ".str_replace('../', '', $file).PHP_EOL;
 
         // parse every comment in this file
         foreach ($phpDoc[0] as $k => $v) {

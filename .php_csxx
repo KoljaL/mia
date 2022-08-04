@@ -1,0 +1,9 @@
+<?php
+
+return PhpCsFixer\Config::create()
+->setRules(array(
+    'braces' => array(
+        'position_after_anonymous_constructs' => 'next',
+        'position_after_control_structures' => 'next',
+    )
+));
