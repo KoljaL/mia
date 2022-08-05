@@ -60,3 +60,11 @@ It takes an object, converts it to JSON, and prints it to the console
 It takes a response array, adds some extra information to it, and then returns it as a JSON object  
 **param** ` array ` The response array that will be returned to the client.  
 **return** ` JSON ` The response is a JSON object with the following keys:  
+ 
+ 
+## php/functionsDB.php
+
+### `getProjectsFromCustomer($id)`  
+It returns an array of all the projects that belong to a customer  
+**param** ` id ` The id of the customer  
+**return** ` array ` of projects  
