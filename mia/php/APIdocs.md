@@ -11,7 +11,7 @@ Generating a JWT token.
 ### `testfunction()`  
 bla  
  
- 
+  
 ## endpoints/customer.php
 if no customer_id this endpoint will return a list of all customer from the current staff  
 with a customer_id it will return the data of this customer  
