@@ -112,8 +112,8 @@ function pprint($data, $name = '')
     print '<div style="width:max-content; background:#ccc;padding-inline:.25em;margin:.5em;">';
     print '<h4 style=background:#aaa;>'.$name.'</h4> ';
     print "<pre>";
-    // print_r($data);
-    var_export($data);
+    print_r($data);
+    // var_export($data);
     print "</pre>";
     print "</div>";
 }
