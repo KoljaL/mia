@@ -1,67 +1,92 @@
 <?php
 
-require_once 'functions.php';
-require_once __DIR__ . './../vendor/autoload.php';
-require_once 'config.php';
-
+if (!class_exists('RedBeanPHP\R')) {
+    die('no direct loading allowed');
+}
 
 use RedBeanPHP\R as R;
 
-R::setup('sqlite:../db/'.$conf['DB_filename']);
-R::nuke();
-R::fancyDebug();
+// R::fancyDebug();
 // R::freeze(true);
 
 
-//
-// ceate admin user
-//
-$staff = R::dispense('staff');
-$staff->name = 'admin';
-$staff->password = password_hash("admin", PASSWORD_DEFAULT);
-$staff->email = 'mail@example.com';
-$staff->address = 'Main Rd. 22, 12234 Capital City';
-$staff->avatar = 'https://i.pravatar.cc/150';
-$staff->registrationdate = date("Y-m-d H:i");
-$staff->role = 0;
-$staff->permission = 0;
+if ('nuke' === $url['value']) {
+    R::nuke();
+    initDB();
+}
 
 
-//
-// create first customer
-//
-$customer = R::dispense('customer');
-$customer->name = 'customer';
-$customer->password = password_hash("customer", PASSWORD_DEFAULT);
-$customer->email = 'customer@example.com';
-$customer->address = 'Main Rd. 22, 12234 Capital City';
-$customer->avatar = 'https://i.pravatar.cc/150';
-$customer->registrationdate = date("Y-m-d H:i");
-$customer->role = 0;
-$customer->permission = 0;
-
-//
-// init projects
-//
-$project = R::dispense('project');
-$project->title = 'project';
-
-//
-// init appointments
-//
-$appointment = R::dispense('appointment');
-$appointment->title = 'appointment';
+if ('fake' === $url['value']) {
+    // $count = ($url['ext_1']) || 2;
+    // echo $count;
+    fakerData(2, 2, 2, 2);
+}
 
 
 
 
-//
-// store in database
-//
-$staff->ownCustomerList[] = $customer;
-$customer->ownProjectList[] = $project;
-$project->ownAppointmentList[] = $appointment;
-R::store($staff);
+
+
+function initDB()
+{
+
+    //
+    // ceate admin user
+    //
+    $staff = R::dispense('staff');
+    $staff->name = 'admin';
+    $staff->password = password_hash("admin", PASSWORD_DEFAULT);
+    $staff->email = 'mail@example.com';
+    $staff->address = 'Main Rd. 22, 12234 Capital City';
+    $staff->avatar = 'https://i.pravatar.cc/150';
+    $staff->registrationdate = date("Y-m-d H:i");
+    $staff->role = 0;
+    $staff->permission = 0;
+
+
+    //
+    // create first customer
+    //
+    $customer = R::dispense('customer');
+    $customer->name = 'customer';
+    $customer->password = password_hash("customer", PASSWORD_DEFAULT);
+    $customer->email = 'customer@example.com';
+    $customer->address = 'Main Rd. 22, 12234 Capital City';
+    $customer->avatar = 'https://i.pravatar.cc/150';
+    $customer->registrationdate = date("Y-m-d H:i");
+    $customer->role = 0;
+    $customer->permission = 0;
+
+    //
+    // init projects
+    //
+    $project = R::dispense('project');
+    $project->title = 'project';
+
+    //
+    // init appointments
+    //
+    $appointment = R::dispense('appointment');
+    $appointment->title = 'appointment';
+    $appointment->date = date("Y-m-d H:i");
+
+
+
+    //
+    // store in database
+    //
+
+    $staff->ownCustomerList[] = $customer;
+    $staff->ownProjectList[] = $project;
+    $staff->ownAppointmentList[] = $appointment;
+
+    $customer->ownProjectList[] = $project;
+    $customer->ownAppointmentList[] = $appointment;
+
+    $project->ownAppointmentList[] = $appointment;
+
+    R::store($staff);
+}
 
 
 function fakerData($noStaff, $noCustomer, $noProject, $noAppointment)
@@ -72,9 +97,9 @@ function fakerData($noStaff, $noCustomer, $noProject, $noAppointment)
     // staff
     //
     for ($i=0; $i < $noStaff; $i++) {
-        $faker->seed($i);
+        // $faker->seed($i);
         $staff = R::dispense('staff');
-        $staff->name = $faker->name();
+        $staff->name = $faker->firstName().' '.$faker->lastName();
         $staff->password = password_hash("admin", PASSWORD_DEFAULT);
         $staff->email = $faker->email();
         $staff->address = $faker->address();
@@ -87,9 +112,10 @@ function fakerData($noStaff, $noCustomer, $noProject, $noAppointment)
         // customer
         //
         for ($j= 0; $j< $noCustomer ; $j++) {
-            $faker->seed($j);
+            // $faker->seed($j+$i);
+            $customername = $faker->firstName().' '.$faker->lastName();
             $customer = R::dispense('customer');
-            $customer->name = $faker->name();
+            $customer->name = $customername;
             $customer->password = password_hash("customer", PASSWORD_DEFAULT);
             $customer->email = $faker->email();
             $customer->address = $faker->address();
@@ -102,17 +128,17 @@ function fakerData($noStaff, $noCustomer, $noProject, $noAppointment)
             // project
             //
             for ($k=0; $k < $noProject; $k++) {
-                $faker->seed($k);
+                // $faker->seed($k+$i+$j);
                 $project = R::dispense('project');
-                $project->title = 'project';
+                $project->title = explode(' ', $customername)[0].'-project-'.$k;
 
                 //
                 // appointment
                 //
                 for ($a=0; $a < $noAppointment ; $a++) {
-                    $faker->seed($a);
+                    // $faker->seed($a+$k+$i+$j);
                     $appointment = R::dispense('appointment');
-                    $appointment->title = 'appointment';
+                    $appointment->title = explode(' ', $customername)[0].'-appointment-'.$a;
                     $appointment->date = $faker->dateTimeBetween('-1 week', '+1 week');
 
 
@@ -120,8 +146,15 @@ function fakerData($noStaff, $noCustomer, $noProject, $noAppointment)
                     // store in database
                     //
                     $staff->ownCustomerList[] = $customer;
+                    $staff->ownProjectList[] = $project;
+                    $staff->ownAppointmentList[] = $appointment;
+
                     $customer->ownProjectList[] = $project;
+                    $customer->ownAppointmentList[] = $appointment;
+
                     $project->ownAppointmentList[] = $appointment;
+
+
                     R::store($staff);
                 } // appointment
             } // project
@@ -130,7 +163,6 @@ function fakerData($noStaff, $noCustomer, $noProject, $noAppointment)
 }
 
 
-fakerData(5, 5, 5, 5);
 
 
 // $staff = R::load('staff', 1);
@@ -169,14 +201,14 @@ fakerData(5, 5, 5, 5);
 // $shop = R::dispense('shop');
 // $shop->name = 'Antiques';
 
-// $vase = R::dispense('product');
+// $vase = R::dispense('project');
 // $vase->price = 25;
 // $shop->ownProductList[] = $vase;
 // R::store($shop);
 
 // $shop = R::load('shop', 1);
-// foreach ($shop->ownProductList as $product) {
-//     print_r($product->export());
+// foreach ($shop->ownProductList as $project) {
+//     print_r($project->export());
 // } //iterate
 
 
@@ -227,5 +259,4 @@ fakerData(5, 5, 5, 5);
 //   }
 // ]);
 
-
-pprint(round(1000*(microtime(true)-$start), 0).' ms', 'Executing time');
+// pprint(round(1000*(microtime(true)-$start), 0).' ms', 'Executing time');
