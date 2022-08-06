@@ -1,30 +1,62 @@
 <script>
-	export let name;
+    import { onMount } from 'svelte';
+    import axios from 'axios';
+
+    let data;
+    let customer = [];
+    let error = null;
+    let promise = Promise.resolve([]);
+
+    async function fetchUsers() {
+        const response = await axios.get('http://localhost:9090/mia/customer');
+
+        if (response.data) {
+            console.log(response);
+            return response.data;
+        } else {
+            throw new Error(data);
+        }
+    }
+
+    function handleClick() {
+        // Now set it to the real fetch promise
+        promise = fetchUsers();
+        console.log(promise);
+    }
+
+    onMount(async () => {
+        try {
+            const res = await axios.get('http://localhost:9090/mia/customer');
+            console.log(res);
+            data = res.data;
+            customer = res.data.data;
+        } catch (e) {
+            error = e;
+        }
+    });
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+<button on:click={handleClick}> Load Users </button>
 
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
+{#await promise}
+    <p>...waiting</p>
+{:then data}
+    {JSON.stringify(data, null, 2)}
+{:catch error}
+    <p style="color: red">{error.message}</p>
+{/await}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
+{#if error !== null}
+    {error}
+{:else}
+    <pre>
+	{JSON.stringify(data, null, 2)}
+</pre>
+    <ul>
+        {#each customer as cus}
+            <li>
+                {cus.name}
+            </li>
+        {/each}
+    </ul>
+{/if}
