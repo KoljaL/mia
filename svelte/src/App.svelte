@@ -36,7 +36,7 @@
     });
 </script>
 
-<button on:click={handleClick}> Load Users </button>
+<button class="btn" on:click={handleClick}> Load Users </button>
 
 {#await promise}
     <p>...waiting</p>
