@@ -1,6 +1,6 @@
  
  
-## endpoints/login.php
+## endpoints/login.phpxx
 
 ### `$jwt = generateJWT($payload)`  
 Generating a JWT token.  
