@@ -1,20 +1,22 @@
 <?php
 
+//
+// time measurement
+//
+$start = microtime(true);
 
 
 //
 // Error handeling
 //
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 ini_set("log_errors", 1);
 if (is_file('./error.log')) {
-    unlink('./error.log');
+    // unlink('./error.log');
 }
 ini_set("error_log", "./error.log");
-$start = microtime(true);
 
 
 /**
@@ -34,6 +36,10 @@ function getEndpoint()
     $array = array_slice($uri, $api+1);
     $array = replace_key($array, 0, 'endpoint');
     $array = replace_key($array, 1, 'value');
+    // TODO makes CHORS error, but why?
+    // if (!isset($array['value'])) {
+    //     $array['value'] = '';
+    // }
     $array['method'] = $_SERVER['REQUEST_METHOD'];
     // pprint($array);
 
@@ -126,7 +132,7 @@ function readJWT($jwt)
  */
 function replace_key($arr, $oldkey, $newkey)
 {
-    if (array_key_exists($oldkey, $arr)) {
+    if (array_key_exists($oldkey, $arr) && '' !== $arr[$oldkey]) {
         $keys = array_keys($arr);
         $keys[array_search($oldkey, $keys)] = $newkey;
         return array_combine($keys, $arr);

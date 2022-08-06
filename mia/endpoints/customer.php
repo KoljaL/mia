@@ -42,8 +42,13 @@ if (!isset($url['value'])) {
 }
 
 
-if ('' !== $url['value']) {
-    $response['data'] = getCustomer($url['value']);
+if (is_numeric($url['value'])) {
+    $response['data'][0] = getCustomer($url['value']);
+    returnJSON($response);
+} else {
+    $response['data'] = '';
+    $response['status'] = 400;
+    $response['message'] = 'no numeric customer_id';
     returnJSON($response);
 }
 

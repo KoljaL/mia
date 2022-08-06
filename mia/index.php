@@ -73,11 +73,11 @@ switch ($url['endpoint']) {
             //
             // verify JWT from barier and get user properties
             //
-            $jwt ='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdGFmZl9pZCI6Miwicm9sZSI6MCwicGVybWlzc2lvbiI6MH0.KDZFke1cyh-V5Ez7qvtqzqkerN707S6Rv982lBVJkts';
+            $jwt ="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdGFmZl9pZCI6OCwicm9sZSI6MCwicGVybWlzc2lvbiI6MH0.tzH7VLleNEIq2pJM6tuLs2M2icQoLqpTDqOhrjdMNYc";
             $user = readJWT($jwt);
             $response['user'] = $user;
             // pprint($user, 'User');
-            // $payload = ['staff_id' => 2,'role' => 0,'permission' => 0];
+            // $payload = ['staff_id' => 8,'role' => 0,'permission' => 0];
             // pprint(generateJWT($payload));
 
 

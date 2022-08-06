@@ -6,7 +6,7 @@ import Home from './routes/Home.svelte'
 export default {
     '/': Home,
 
-    '/customer': Customer,
+    '/customer/:id?': Customer,
 
     '*': NotFound,
 }

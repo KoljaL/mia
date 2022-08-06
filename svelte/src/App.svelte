@@ -1,11 +1,29 @@
 <script>
-    import Router from 'svelte-spa-router';
-    import routes from './routes';
+    import Navbar from './layout/Header.svelte';
+    import Sidebar from './layout/Sidebar.svelte';
+    import Main from './layout/Content.svelte';
+
+    let open = false;
 </script>
 
-<ul>
-    <li><a href="#/">Home</a></li>
-    <li><a href="#/customer">Say hi!</a></li>
-</ul>
+<Sidebar bind:open />
 
-<Router {routes} />
+<Navbar bind:sidebar={open} />
+
+<Main />
+
+<style>
+    :global(body) {
+        padding: 0;
+    }
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    :global(*)::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    :global(*) {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+</style>

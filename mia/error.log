@@ -1,0 +1,10 @@
+[06-Aug-2022 22:16:27 UTC] PHP Warning:  Undefined array key "value" in /Users/lasarkolja/Code/mia/mia/endpoints/initDB.php on line 13
+[06-Aug-2022 22:16:27 UTC] PHP Warning:  Undefined array key "value" in /Users/lasarkolja/Code/mia/mia/endpoints/initDB.php on line 19
+[06-Aug-2022 22:20:38 UTC] PHP Warning:  Undefined array key "value" in /Users/lasarkolja/Code/mia/mia/php/functions.php on line 39
+[06-Aug-2022 22:21:28 UTC] PHP Warning:  Undefined array key "value" in /Users/lasarkolja/Code/mia/mia/php/functions.php on line 39
+[06-Aug-2022 22:21:29 UTC] PHP Warning:  Undefined array key "value" in /Users/lasarkolja/Code/mia/mia/php/functions.php on line 39
+[06-Aug-2022 22:21:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function key_exist() in /Users/lasarkolja/Code/mia/mia/php/functions.php:39
+Stack trace:
+#0 /Users/lasarkolja/Code/mia/mia/index.php(41): getEndpoint()
+#1 {main}
+  thrown in /Users/lasarkolja/Code/mia/mia/php/functions.php on line 39

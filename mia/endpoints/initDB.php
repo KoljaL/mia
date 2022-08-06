@@ -10,16 +10,14 @@ use RedBeanPHP\R as R;
 // R::freeze(true);
 
 
-if ('nuke' === $url['value']) {
+if (in_array('nuke', $url)) {
     R::nuke();
     initDB();
 }
 
 
-if ('fake' === $url['value']) {
-    // $count = ($url['ext_1']) || 2;
-    // echo $count;
-    fakerData(2, 2, 2, 2);
+if (in_array('fake', $url)) {
+    fakerData(2, 32, 2, 2);
 }
 
 

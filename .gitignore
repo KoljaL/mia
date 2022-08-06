@@ -4,3 +4,4 @@
 .LSOverride
 mia/vendor/*
 mia/config.php
+svelte/node_modules

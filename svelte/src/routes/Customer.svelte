@@ -1,62 +1,47 @@
 <script>
     import { onMount } from 'svelte';
     import axios from 'axios';
-
+    export let params = {};
+    let customerID;
+    if (null === params.id) {
+        customerID = '';
+    } else {
+        customerID = '/' + params.id;
+    }
     let data;
-    let customer = [];
+    let customers = [];
     let error = null;
-    let promise = Promise.resolve([]);
-
-    async function fetchUsers() {
-        const response = await axios.get('http://localhost:9090/mia/customer');
-
-        if (response.data) {
-            console.log(response);
-            return response.data;
-        } else {
-            throw new Error(data);
-        }
-    }
-
-    function handleClick() {
-        // Now set it to the real fetch promise
-        promise = fetchUsers();
-        console.log(promise);
-    }
 
     onMount(async () => {
         try {
-            const res = await axios.get('http://localhost:9090/mia/customer');
+            const res = await axios.get('http://localhost:9090/mia/customer' + customerID);
             console.log(res);
-            data = res.data;
-            customer = res.data.data;
+            data = res.data.data;
+            customers = res.data.data;
         } catch (e) {
             error = e;
         }
     });
 </script>
 
-<button class="btn" on:click={handleClick}> Load Users </button>
-
-{#await promise}
-    <p>...waiting</p>
-{:then data}
-    {JSON.stringify(data, null, 2)}
-{:catch error}
-    <p style="color: red">{error.message}</p>
-{/await}
-
 {#if error !== null}
-    {error}
+    <p style="color: red">{error.message}</p>
 {:else}
-    <pre>
-	{JSON.stringify(data, null, 2)}
-</pre>
-    <ul>
-        {#each customer as cus}
-            <li>
-                {cus.name}
-            </li>
+    <!-- <pre>	{JSON.stringify(data, null, 2)}</pre> -->
+    <div class="flex flex-wrap gap-4">
+        {#each customers as customer}
+            <div class="card w-80 bg-base-84 shadow-xl">
+                <figure class="px-10 pt-10">
+                    <img src={customer.avatar} alt="Shoes" class="rounded-xl" />
+                </figure>
+                <div class="card-body items-center text-center">
+                    <h2 class="card-title">{customer.name}</h2>
+                    <p>{@html customer.address.replace('\n', '<br />')}</p>
+                    <div class="card-actions">
+                        <button class="btn btn-primary">{customer.email}</button>
+                    </div>
+                </div>
+            </div>
         {/each}
-    </ul>
+    </div>
 {/if}
