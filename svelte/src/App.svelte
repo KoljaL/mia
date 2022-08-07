@@ -26,4 +26,14 @@
         -ms-overflow-style: none; /* IE and Edge */
         scrollbar-width: none; /* Firefox */
     }
+
+    :global(body) {
+        background-color: #c4c4c4;
+        color: #0084f6;
+        transition: background-color 0.3s;
+    }
+    :global(body.dark-mode) {
+        background-color: #1d3040;
+        color: #bfc2c7;
+    }
 </style>
