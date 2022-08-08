@@ -4,7 +4,7 @@
     }
 </script>
 
-<button class="hamburger hamburger--squeeze js-hamburger" on:click={toggleSidebar}>
+<button class="hamburger" on:click={toggleSidebar}>
     <div class="hamburger-box">
         <div class="hamburger-inner" />
     </div>
@@ -72,28 +72,28 @@
         bottom: -10px;
     }
 
-    .hamburger--squeeze .hamburger-inner {
+    .hamburger-inner {
         transition-duration: 0.075s;
         transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
     }
-    .hamburger--squeeze .hamburger-inner::before {
+    .hamburger-inner::before {
         transition: top 0.075s 0.12s ease, opacity 0.075s ease;
     }
-    .hamburger--squeeze .hamburger-inner::after {
+    .hamburger-inner::after {
         transition: bottom 0.075s 0.12s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
     }
 
-    :global(body.showSidebar) .hamburger--squeeze .hamburger-inner {
+    :global(body.showSidebar) .hamburger-inner {
         transform: rotate(45deg);
         transition-delay: 0.12s;
         transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     }
-    :global(body.showSidebar) .hamburger--squeeze .hamburger-inner::before {
+    :global(body.showSidebar) .hamburger-inner::before {
         top: 0;
         opacity: 0;
         transition: top 0.075s ease, opacity 0.075s 0.12s ease;
     }
-    :global(body.showSidebar) .hamburger--squeeze .hamburger-inner::after {
+    :global(body.showSidebar) .hamburger-inner::after {
         bottom: 0;
         transform: rotate(-90deg);
         transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);

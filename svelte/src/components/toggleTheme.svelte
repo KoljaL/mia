@@ -4,20 +4,20 @@
     const modes = ['theme-dark', 'theme-blue', 'theme-light'];
 
     if (localStorage.getItem('colorStyle')) {
-        document.body.setAttribute('class', localStorage.getItem('colorStyle'));
+        document.body.setAttribute('data-theme', localStorage.getItem('colorStyle'));
     }
 
     // set default mode (if no :root{})
     else {
-        document.body.setAttribute('class', modes[0]);
+        document.body.setAttribute('data-theme', modes[0]);
     }
 
     function toggleTheme() {
-        let mode = document.body.getAttribute('class');
+        let mode = document.body.getAttribute('data-theme');
         let modeIndex = modes.indexOf(mode) + 1;
         if (modeIndex === modes.length) modeIndex = 0;
         localStorage.setItem('colorStyle', modes[modeIndex]);
-        document.body.setAttribute('class', modes[modeIndex]);
+        document.body.setAttribute('data-theme', modes[modeIndex]);
     }
 </script>
 

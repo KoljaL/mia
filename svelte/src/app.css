@@ -2,15 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 @layer base {
-    .theme-light {
+    [data-theme="theme-light"] {
         --color-primary: #155e75;
         --color-secondary: #cffafe;
     }
-    .theme-dark {
+    [data-theme="theme-dark"] {
         --color-primary: #991b1b;
         --color-secondary: #fecaca;
     }
-    .theme-blue {
+    [data-theme="theme-blue"] {
         --color-primary: #166534;
         --color-secondary: #bbf7d0;
     }
