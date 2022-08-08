@@ -28,7 +28,7 @@
         z-index: 100;
     }
 
-    .open {
+    :global(body.showSidebar) aside {
         left: 0;
         transition: left 0.7s ease-in-out;
         width: 15rem;

@@ -1,7 +1,7 @@
 <script>
-    import DarkModeButton from '../components/DarkModeButton.svelte';
+    import ToggleTheme from '../components/toggleTheme.svelte';
 </script>
 
 <nav class="sm:block">
-    <DarkModeButton />
+    <ToggleTheme />
 </nav>

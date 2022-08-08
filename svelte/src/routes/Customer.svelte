@@ -38,7 +38,7 @@
                 <figure class="px-10 pt-10">
                     <img src={customer.avatar} alt="Shoes" class="rounded-xl" />
                 </figure>
-                <div class="card-body items-center text-center">
+                <div class="card-body items-center text-center bg-primary">
                     <h2 class="card-title" on:click={getCustomerData(customer.id)}><a class="block" href="#/customer/{customer.id}">{customer.name}</a></h2>
                     <p>{@html customer.address.replace('\n', '<br />')}</p>
                     <div class="card-actions">
