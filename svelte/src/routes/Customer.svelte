@@ -1,6 +1,8 @@
 <script>
     import { onMount } from 'svelte';
     import axios from 'axios';
+    import { fade } from 'svelte/transition';
+
     export let params = {};
     let customerID;
     if (null === params.id) {
@@ -19,7 +21,7 @@
     async function getCustomerData(id = '') {
         try {
             const res = await axios.get('http://localhost:9090/mia/customer' + customerID);
-            // console.log(res);
+            console.log(res);
             data = res.data.data;
             customers = res.data.data;
         } catch (e) {
@@ -32,7 +34,7 @@
     <p style="color: red">{error.message}</p>
 {:else}
     <!-- <pre>	{JSON.stringify(data, null, 2)}</pre> -->
-    <div class="flex flex-wrap gap-4">
+    <div transition:fade={{ delay: 50, duration: 200 }} class="flex flex-wrap gap-4">
         {#each customers as customer}
             <div class="card w-80 bg-base-84 shadow-xl">
                 <figure class="px-10 pt-10">

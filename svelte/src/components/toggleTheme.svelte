@@ -1,10 +1,10 @@
 <script>
     // TODO onMount load toggleTgeme with parameter
 
-    const modes = ['theme-dark', 'theme-blue', 'theme-light'];
+    const modes = ['theme-dark', 'theme-light'];
 
-    if (localStorage.getItem('colorStyle')) {
-        document.body.setAttribute('data-theme', localStorage.getItem('colorStyle'));
+    if (localStorage.getItem('data-theme')) {
+        document.body.setAttribute('data-theme', localStorage.getItem('data-theme'));
     }
 
     // set default mode (if no :root{})
@@ -16,7 +16,7 @@
         let mode = document.body.getAttribute('data-theme');
         let modeIndex = modes.indexOf(mode) + 1;
         if (modeIndex === modes.length) modeIndex = 0;
-        localStorage.setItem('colorStyle', modes[modeIndex]);
+        localStorage.setItem('data-theme', modes[modeIndex]);
         document.body.setAttribute('data-theme', modes[modeIndex]);
     }
 </script>
@@ -29,9 +29,9 @@
 
 <style>
     .SVGicon {
-        fill: red;
+        fill: var(--color-primary);
     }
     .SVGicon:hover {
-        fill: blue;
+        filter: brightness(150%);
     }
 </style>
