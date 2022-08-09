@@ -5,7 +5,7 @@
     // export let sidebar = true;
 </script>
 
-<header class="fixed z-50 w-full flex justify-between h-14 bg-gray-200 p-2 items-center text-gray-600 border-b-2">
+<header class="fixed z-50 w-full flex justify-between h-14 text-text-prim p-2 items-center border-b-2">
     <nav class="flex">
         <!-- <Hamburger bind:open={sidebar} /> -->
         <Hamburger />

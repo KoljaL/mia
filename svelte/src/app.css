@@ -1,8 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* @layer base {
+@layer base {
     [data-theme="theme-light"] {
         --text-prim: #6c757d;
         --text-secu: #007bff;
@@ -33,4 +32,4 @@
         --warn: #cb7832;
         --error: #e9553b;
     }
-} */
+}
