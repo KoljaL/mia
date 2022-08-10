@@ -3,7 +3,7 @@
     import routes from './../routes';
 </script>
 
-<main class="p-4 pt-16 text-gray-300">
+<main class="p-4 pt-16 text-prim bg-tert h-screen overflow-auto">
     <Router {routes} />
 </main>
 

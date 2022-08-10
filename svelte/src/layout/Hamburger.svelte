@@ -4,7 +4,7 @@
     }
 </script>
 
-<button class="hamburger" on:click={toggleSidebar}>
+<button class="hamburger text-prim" on:click={toggleSidebar}>
     <div class="hamburger-box">
         <div class="hamburger-inner" />
     </div>
@@ -19,7 +19,7 @@
         transition-duration: 0.15s;
         transition-timing-function: linear;
         font: inherit;
-        color: inherit;
+        /* color: inherit; */
         text-transform: none;
         background-color: transparent;
         border: 0;
@@ -29,12 +29,12 @@
     .hamburger:hover {
         opacity: 0.7;
     }
-
+    /* 
     :global(body.showSidebar) .hamburger-inner,
     :global(body.showSidebar) .hamburger-inner::before,
     :global(body.showSidebar) .hamburger-inner::after {
         background-color: #000;
-    }
+    } */
 
     .hamburger-box {
         width: 40px;
@@ -53,7 +53,7 @@
     .hamburger-inner::after {
         width: 40px;
         height: 4px;
-        background-color: #000;
+        background-color: var(--text-prim);
         border-radius: 4px;
         position: absolute;
         transition-property: transform;

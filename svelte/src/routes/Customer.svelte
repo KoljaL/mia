@@ -34,9 +34,9 @@
     <p style="color: red">{error.message}</p>
 {:else}
     <!-- <pre>	{JSON.stringify(data, null, 2)}</pre> -->
-    <div transition:fade={{ delay: 50, duration: 200 }} class="flex flex-wrap gap-4">
+    <div transition:fade={{ delay: 50, duration: 200 }} class="flex flex-wrap justify-around ">
         {#each customers as customer}
-            <div class="card w-80 bg-base-84 shadow-xl">
+            <div class="card w-80 bg-seco mb-8 border border-prim shadow-xl">
                 <figure class="px-10 pt-10">
                     <img src={customer.avatar} alt="Shoes" class="rounded-xl" />
                 </figure>

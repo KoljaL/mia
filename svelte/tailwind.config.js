@@ -3,28 +3,36 @@ const colors = require('tailwindcss/colors')
 module.exports = {
     content: ['./src/**/*.{svelte,js,ts}'],
     theme: {
+
+        backgroundColor: {
+            "prim": "var(--bg-prim)",
+            "seco": "var(--bg-seco)",
+            "tert": "var(--bg-tert)",
+            "info": "var(--info)",
+            "warn": "var(--warn)",
+            "error": "var(--error)",
+            ...colors
+        },
         textColor: {
-            "text-prim": "var(--text-prim)",
-            "text-secu": "var(--text-secu)",
-            "text-tert": "var(--text-tert)",
-            "bg-prim": "var(--bg-prim)",
-            "bg-secu": "var(--bg-secu)",
-            "bg-tert": "var(--bg-tert)",
-            "border-prim": "var(--border-prim)",
-            "border-secu": "var(--border-secu)",
-            "border-tert": "var(--border-tert)",
+            "prim": "var(--text-prim)",
+            "seco": "var(--text-seco)",
+            "tert": "var(--text-tert)",
             "success": "var(--success)",
             "info": "var(--info)",
             "warn": "var(--warn)",
             "error": "var(--error)",
             ...colors
         },
-        backgroundColor: {
-            "primary": "var(--color-primary)",
-            "secondary": "var(--color-secondary)",
+        borderColor: {
+            "prim": "var(--border-prim)",
+            "seco": "var(--border-seco)",
+            "tert": "var(--border-tert)",
             ...colors
+
         },
-        extend: {},
+        extend: {
+
+        },
     },
     plugins: [require('daisyui')],
 }

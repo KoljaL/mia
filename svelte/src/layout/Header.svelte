@@ -2,12 +2,10 @@
     import Logo from './Logo.svelte';
     import Hamburger from './Hamburger.svelte';
     import Menu from './Menu.svelte';
-    // export let sidebar = true;
 </script>
 
-<header class="fixed z-50 w-full flex justify-between h-14 text-text-prim p-2 items-center border-b-2">
+<header class="fixed z-50 w-full flex justify-between h-12 bg-prim text-prim p-2 items-center border-b border-prim">
     <nav class="flex">
-        <!-- <Hamburger bind:open={sidebar} /> -->
         <Hamburger />
         <Logo />
     </nav>

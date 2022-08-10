@@ -1,9 +1,1 @@
-<svg width=auto height=30>
-	<text x=0 y=20>ACME</text>
-</svg>
-
-<style>
-	text {
-		fill: currentColor
-	}
-</style>
+<span class="p-8 text-xl">Mia</span>

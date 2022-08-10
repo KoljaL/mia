@@ -29,7 +29,7 @@
 
 <style>
     .SVGicon {
-        fill: var(--color-primary);
+        fill: var(--text-prim);
     }
     .SVGicon:hover {
         filter: brightness(150%);
