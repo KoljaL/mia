@@ -34,20 +34,85 @@
     <p style="color: red">{error.message}</p>
 {:else}
     <!-- <pre>	{JSON.stringify(data, null, 2)}</pre> -->
-    <div transition:fade={{ delay: 50, duration: 200 }} class="flex flex-wrap justify-around ">
+    <div transition:fade={{ delay: 50, duration: 200 }} class="cardHolder ">
         {#each customers as customer}
-            <div class="card w-80 bg-seco mb-8 border border-prim shadow-xl">
-                <figure class="px-10 pt-10">
-                    <img src={customer.avatar} alt="Shoes" class="rounded-xl" />
+            <div class="cardx">
+                <figure>
+                    <img src={customer.avatar} alt="Shoes" />
                 </figure>
-                <div class="card-body items-center text-center bg-primary">
-                    <h2 class="card-title" on:click={getCustomerData(customer.id)}><a class="block" href="#/customer/{customer.id}">{customer.name}</a></h2>
+                <div class="cardBody">
+                    <a class="cardTitle" on:click={getCustomerData(customer.id)} href="#/customer/{customer.id}">{customer.name}</a>
                     <p>{@html customer.address.replace('\n', '<br />')}</p>
-                    <div class="card-actions">
-                        <button class="btn btn-primary">{customer.email}</button>
-                    </div>
+                </div>
+                <div class="cardFooter">
+                    <button class="btnx">{customer.email}</button>
+                    <button class="btnx">01234 - 2345</button>
                 </div>
             </div>
         {/each}
     </div>
 {/if}
+
+<style>
+    .cardHolder {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .cardx {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        border-radius: 1rem;
+        background-color: var(--bg-seco);
+        border: 1px solid var(--border-prim);
+        width: 20rem;
+        margin-bottom: 2rem;
+    }
+    .cardx figure {
+        padding: 2.5rem;
+        padding-bottom: 0;
+    }
+    .cardx img {
+        border-radius: 0.75rem;
+        width: 50px;
+        height: auto;
+    }
+    .cardx .cardBody {
+        text-align: center;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        padding: 2rem;
+        gap: 0.5rem;
+        align-items: center;
+    }
+    .cardx .cardTitle {
+        font-size: 1.5em;
+    }
+
+    .cardFooter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: space-around;
+        padding-bottom: 1rem;
+    }
+    .btnx {
+        color: white;
+        background-color: var(--success);
+        border-radius: 5px;
+        font-size: 17px;
+        padding: 6px 18px;
+        border: none;
+        display: inline-block;
+        padding: 8px 16px;
+        vertical-align: middle;
+        overflow: hidden;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+</style>

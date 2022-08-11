@@ -4,7 +4,7 @@
     import Menu from './Menu.svelte';
 </script>
 
-<header class="fixed z-50 w-full flex justify-between h-12 bg-prim text-prim p-2 items-center border-b border-prim">
+<header>
     <nav class="flex">
         <Hamburger />
         <Logo />
@@ -12,3 +12,20 @@
 
     <Menu />
 </header>
+
+<style>
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 3rem;
+        position: fixed;
+        z-index: 50;
+        background-color: var(--bg-prim);
+        border-bottom: 1px solid var(--border-prim);
+    }
+    nav {
+        display: flex;
+    }
+</style>

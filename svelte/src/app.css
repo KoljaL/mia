@@ -1,8 +1,22 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
-/* @layer base { */
+html {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+body {
+    margin: 0;
+    line-height: inherit;
+    padding: 0;
+    background-color: var(--bg-tert);
+}
 
 [data-theme="theme-light"] {
     --text-prim: #6c757d;
@@ -35,6 +49,3 @@
     --warn: #cb7832;
     --error: #e9553b;
 }
-
-
-/* } */

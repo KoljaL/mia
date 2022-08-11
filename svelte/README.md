@@ -13,3 +13,12 @@
 - DaisyUI
 - Axios
 - [SPA-Router](https://github.com/ItalyPaleAle/svelte-spa-router) 
+
+
+## Functions & Components
+
+### Theme Switch
+In this way, it is posible to set an unlimited amount of themes & and switching them by just one button.
+Therefor an attribute is set to the body tag `<body data-theme="theme-dark">` and althougt stored in localStorage. 
+The theme-switch names, function & icon are defined in `./components/toggleTheme.svelte`. 
+In `./app.css` are the custom variables for every theme, they get importet into tailwind inside `./tailwind.config.js`.

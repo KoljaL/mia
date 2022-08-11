@@ -4,7 +4,7 @@
     }
 </script>
 
-<button class="hamburger text-prim" on:click={toggleSidebar}>
+<button class="hamburger" on:click={toggleSidebar}>
     <div class="hamburger-box">
         <div class="hamburger-inner" />
     </div>
@@ -19,6 +19,7 @@
         transition-duration: 0.15s;
         transition-timing-function: linear;
         font: inherit;
+        color: var(--text-prim);
         /* color: inherit; */
         text-transform: none;
         background-color: transparent;

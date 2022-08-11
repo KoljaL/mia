@@ -2,6 +2,12 @@
     import ToggleTheme from '../components/toggleTheme.svelte';
 </script>
 
-<nav class="sm:block">
+<nav>
     <ToggleTheme />
 </nav>
+
+<style>
+    nav {
+        display: block;
+    }
+</style>

@@ -3,7 +3,7 @@
     import routes from './../routes';
 </script>
 
-<main class="p-4 pt-16 text-prim bg-tert h-screen overflow-auto">
+<main>
     <Router {routes} />
 </main>
 
@@ -12,8 +12,13 @@
         position: relative;
         transition: left 0.7s ease-in-out;
         left: 0;
+        color: var(--text-prim);
+        background: var(--bg-tert);
+        overflow: auto;
+        height: 100vh;
+        padding: 1rem;
+        padding-top: 4rem;
         max-width: 100vw;
-        /* border: 1px solid red; */
     }
     :global(body.showSidebar) main {
         position: relative;
