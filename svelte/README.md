@@ -6,6 +6,7 @@
 ## Links
 - https://svelte.dev/repl/d7b5f0d565a441cfac66e093ee6fe62d?version=3.19.1
 - https://github.com/alexbaumhoer/svelte-jwt-decode
+- https://stackoverflow.com/questions/38552003/how-to-decode-jwt-token-in-javascript-without-using-a-library
 
 
 ## installed libraries

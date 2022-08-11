@@ -10,6 +10,10 @@ use RedBeanPHP\R as R;
 // R::freeze(true);
 
 
+// $admin = R::load('users', '2');
+// print_r($admin);
+// exit;
+
 if (in_array('nuke', $url)) {
     R::nuke();
     initDB();

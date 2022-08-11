@@ -35,12 +35,44 @@ if (isset($_GET['debug'])) {
 
 
 
+
 //
 // parse URL and create array with endpoint,value & ext_1
 //
 $url = getEndpoint();
 $response['url'] = $url;
 // pprint($url, 'Endpoint');
+
+
+//
+
+// get params from json or POST
+//
+$request = parseRequest();
+$response['request'] = $request;
+// pprint($request);
+
+
+
+//
+// make database connection & load utiliti functions
+//
+RedBeanPHP\R::setup('sqlite:db/'.$conf['DB_filename']);
+require __DIR__ . '/php/functionsDB.php';
+
+//
+// switch between development & production mode
+//
+if ($conf['prod']) {
+    RedBeanPHP\R::freeze(true);
+}
+
+//
+// debug shows redbean queries
+//
+if (isset($_GET['debug']) && $_GET['debug']==='rb') {
+    RedBeanPHP\R::fancyDebug();
+}
 
 
 //
@@ -63,14 +95,6 @@ switch ($url['endpoint']) {
 
 
             //
-            // get params from json or POST
-            //
-            $request = parseRequest();
-            $response['request'] = $request;
-            // pprint($request);
-
-
-            //
             // verify JWT from barier and get user properties
             //
             $jwt ="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdGFmZl9pZCI6OCwicm9sZSI6MCwicGVybWlzc2lvbiI6MH0.tzH7VLleNEIq2pJM6tuLs2M2icQoLqpTDqOhrjdMNYc";
@@ -81,25 +105,6 @@ switch ($url['endpoint']) {
             // pprint(generateJWT($payload));
 
 
-            //
-            // make database connection & load utiliti functions
-            //
-            RedBeanPHP\R::setup('sqlite:db/'.$conf['DB_filename']);
-            require __DIR__ . '/php/functionsDB.php';
-
-            //
-            // switch between development & production mode
-            //
-            if ($conf['prod']) {
-                RedBeanPHP\R::freeze(true);
-            }
-
-            //
-            // debug shows redbean queries
-            //
-            if (isset($_GET['debug']) && $_GET['debug']==='rb') {
-                RedBeanPHP\R::fancyDebug();
-            }
 
 
             //

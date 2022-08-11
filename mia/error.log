@@ -8,3 +8,76 @@ Stack trace:
 #0 /Users/lasarkolja/Code/mia/mia/index.php(41): getEndpoint()
 #1 {main}
   thrown in /Users/lasarkolja/Code/mia/mia/php/functions.php on line 39
+[11-Aug-2022 13:59:43 UTC] PHP Warning:  Undefined variable $jtw in /Users/lasarkolja/Code/mia/mia/endpoints/login.php on line 24
+[11-Aug-2022 22:44:49 UTC] PHP Fatal error:  Uncaught Error: Call to a member function findOne() on null in /Users/lasarkolja/Code/mia/mia/vendor/gabordemooij/redbean/RedBeanPHP/Facade.php:1071
+Stack trace:
+#0 /Users/lasarkolja/Code/mia/mia/endpoints/login.php(14): RedBeanPHP\Facade::findOne('staff', ' email = ? ', Array)
+#1 /Users/lasarkolja/Code/mia/mia/index.php(61): require('/Users/lasarkol...')
+#2 {main}
+  thrown in /Users/lasarkolja/Code/mia/mia/vendor/gabordemooij/redbean/RedBeanPHP/Facade.php on line 1071
+[11-Aug-2022 22:45:22 UTC] PHP Fatal error:  Uncaught Error: Call to a member function findOne() on null in /Users/lasarkolja/Code/mia/mia/vendor/gabordemooij/redbean/RedBeanPHP/Facade.php:1071
+Stack trace:
+#0 /Users/lasarkolja/Code/mia/mia/endpoints/login.php(14): RedBeanPHP\Facade::findOne('staff', ' email = ? ', Array)
+#1 /Users/lasarkolja/Code/mia/mia/index.php(61): require('/Users/lasarkol...')
+#2 {main}
+  thrown in /Users/lasarkolja/Code/mia/mia/vendor/gabordemooij/redbean/RedBeanPHP/Facade.php on line 1071
+[11-Aug-2022 22:46:00 UTC] PHP Fatal error:  Uncaught Error: Call to a member function findOne() on null in /Users/lasarkolja/Code/mia/mia/vendor/gabordemooij/redbean/RedBeanPHP/Facade.php:1071
+Stack trace:
+#0 /Users/lasarkolja/Code/mia/mia/endpoints/login.php(14): RedBeanPHP\Facade::findOne('staff', ' email = ? ', Array)
+#1 /Users/lasarkolja/Code/mia/mia/index.php(61): require('/Users/lasarkol...')
+#2 {main}
+  thrown in /Users/lasarkolja/Code/mia/mia/vendor/gabordemooij/redbean/RedBeanPHP/Facade.php on line 1071
+[11-Aug-2022 22:46:12 UTC] PHP Fatal error:  Uncaught Error: Class "R" not found in /Users/lasarkolja/Code/mia/mia/endpoints/login.php:14
+Stack trace:
+#0 /Users/lasarkolja/Code/mia/mia/index.php(61): require()
+#1 {main}
+  thrown in /Users/lasarkolja/Code/mia/mia/endpoints/login.php on line 14
+[11-Aug-2022 22:46:21 UTC] PHP Fatal error:  Uncaught Error: Class "R" not found in /Users/lasarkolja/Code/mia/mia/endpoints/login.php:14
+Stack trace:
+#0 /Users/lasarkolja/Code/mia/mia/index.php(61): require()
+#1 {main}
+  thrown in /Users/lasarkolja/Code/mia/mia/endpoints/login.php on line 14
+[11-Aug-2022 22:47:04 UTC] PHP Fatal error:  Uncaught Error: Call to a member function findOne() on null in /Users/lasarkolja/Code/mia/mia/vendor/gabordemooij/redbean/RedBeanPHP/Facade.php:1071
+Stack trace:
+#0 /Users/lasarkolja/Code/mia/mia/endpoints/login.php(14): RedBeanPHP\Facade::findOne('staff', ' email = ? ', Array)
+#1 /Users/lasarkolja/Code/mia/mia/index.php(61): require('/Users/lasarkol...')
+#2 {main}
+  thrown in /Users/lasarkolja/Code/mia/mia/vendor/gabordemooij/redbean/RedBeanPHP/Facade.php on line 1071
+[11-Aug-2022 22:48:20 UTC] PHP Fatal error:  Uncaught Error: Call to a member function find() on null in /Users/lasarkolja/Code/mia/mia/vendor/gabordemooij/redbean/RedBeanPHP/Facade.php:1037
+Stack trace:
+#0 /Users/lasarkolja/Code/mia/mia/endpoints/login.php(16): RedBeanPHP\Facade::findAll('staff')
+#1 /Users/lasarkolja/Code/mia/mia/index.php(61): require('/Users/lasarkol...')
+#2 {main}
+  thrown in /Users/lasarkolja/Code/mia/mia/vendor/gabordemooij/redbean/RedBeanPHP/Facade.php on line 1037
+[11-Aug-2022 22:50:22 UTC] PHP Fatal error:  Uncaught Error: Call to a member function load() on null in /Users/lasarkolja/Code/mia/mia/vendor/gabordemooij/redbean/RedBeanPHP/Facade.php:770
+Stack trace:
+#0 /Users/lasarkolja/Code/mia/mia/endpoints/login.php(17): RedBeanPHP\Facade::load('users', '2')
+#1 /Users/lasarkolja/Code/mia/mia/index.php(61): require('/Users/lasarkol...')
+#2 {main}
+  thrown in /Users/lasarkolja/Code/mia/mia/vendor/gabordemooij/redbean/RedBeanPHP/Facade.php on line 770
+[11-Aug-2022 22:51:31 UTC] PHP Fatal error:  Uncaught Error: Call to a member function load() on null in /Users/lasarkolja/Code/mia/mia/vendor/gabordemooij/redbean/RedBeanPHP/Facade.php:770
+Stack trace:
+#0 /Users/lasarkolja/Code/mia/mia/endpoints/login.php(17): RedBeanPHP\Facade::load('users', '2')
+#1 /Users/lasarkolja/Code/mia/mia/index.php(61): require('/Users/lasarkol...')
+#2 {main}
+  thrown in /Users/lasarkolja/Code/mia/mia/vendor/gabordemooij/redbean/RedBeanPHP/Facade.php on line 770
+[11-Aug-2022 22:53:04 UTC] PHP Fatal error:  Uncaught Error: Call to a member function load() on null in /Users/lasarkolja/Code/mia/mia/vendor/gabordemooij/redbean/RedBeanPHP/Facade.php:770
+Stack trace:
+#0 /Users/lasarkolja/Code/mia/mia/endpoints/login.php(10): RedBeanPHP\Facade::load('users', '2')
+#1 /Users/lasarkolja/Code/mia/mia/index.php(61): require('/Users/lasarkol...')
+#2 {main}
+  thrown in /Users/lasarkolja/Code/mia/mia/vendor/gabordemooij/redbean/RedBeanPHP/Facade.php on line 770
+[11-Aug-2022 22:56:29 UTC] PHP Warning:  Undefined variable $params in /Users/lasarkolja/Code/mia/mia/endpoints/login.php on line 20
+[11-Aug-2022 22:56:29 UTC] PHP Warning:  Trying to access array offset on value of type null in /Users/lasarkolja/Code/mia/mia/endpoints/login.php on line 20
+[11-Aug-2022 22:56:50 UTC] PHP Warning:  Undefined array key "email" in /Users/lasarkolja/Code/mia/mia/endpoints/login.php on line 20
+[11-Aug-2022 22:57:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function prtint_r() in /Users/lasarkolja/Code/mia/mia/endpoints/login.php:18
+Stack trace:
+#0 /Users/lasarkolja/Code/mia/mia/index.php(86): require()
+#1 {main}
+  thrown in /Users/lasarkolja/Code/mia/mia/endpoints/login.php on line 18
+[11-Aug-2022 22:57:28 UTC] PHP Warning:  Undefined array key "email" in /Users/lasarkolja/Code/mia/mia/endpoints/login.php on line 20
+[11-Aug-2022 23:00:21 UTC] PHP Fatal error:  Uncaught Error: Call to a member function export() on null in /Users/lasarkolja/Code/mia/mia/endpoints/login.php:21
+Stack trace:
+#0 /Users/lasarkolja/Code/mia/mia/index.php(86): require()
+#1 {main}
+  thrown in /Users/lasarkolja/Code/mia/mia/endpoints/login.php on line 21

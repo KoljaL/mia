@@ -1,13 +1,23 @@
 <script>
-    import Navbar from './layout/Header.svelte';
+    import { writable } from 'svelte/store';
+
+    import { User } from './util/auth.js';
+
+    //
+    // import layout files
+    //
+    import Header from './layout/Header.svelte';
+    import Login from './layout/Login.svelte';
     import Sidebar from './layout/Sidebar.svelte';
     import Main from './layout/Content.svelte';
 
-    let open = false;
+    console.log('User', JSON.stringify($User, null, 2));
 </script>
 
-<Sidebar bind:open />
-
-<Navbar bind:sidebar={open} />
-
-<Main />
+{#if $User}
+    <Sidebar />
+    <Header />
+    <Main />
+{:else}
+    <Login />
+{/if}
