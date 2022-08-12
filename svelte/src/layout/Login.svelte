@@ -1,15 +1,16 @@
 <script>
-    // import { store } from './auth.js'
+    // import ToggleTheme for CSS loading
     import ToggleTheme from '../components/toggleTheme.svelte';
     import axios from 'axios';
-    import { push, pop, replace } from 'svelte-spa-router';
-    import { writable } from 'svelte/store';
-    import { User } from './../util/auth.js';
-    // let User = '';
+    import { authUser } from './../util/auth.js';
+
     let password = 'admin';
     let email = 'mail@example.com';
 
-    async function login() {
+    //
+    // call API login and receive JWT
+    //
+    async function APIlogin() {
         axios
             .post('http://localhost:9090/mia/login', {
                 email: email,
@@ -17,13 +18,8 @@
             })
             .then((resp) => {
                 if (resp.data.status === 200) {
-                    // console.dir(resp.data);
-
-                    let payload = parseJwt(resp.data.data);
-                    // console.log(payload);
-                    push('/customer');
-                    // User = writable(true);
-                    $User = true;
+                    // read the token and login in user
+                    authUser(resp.data.data);
                 } else {
                     return false;
                 }
@@ -32,38 +28,25 @@
                 console.error(err);
             });
     }
-
-    function parseJwt(token) {
-        var base64Url = token.split('.')[1];
-        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        var jsonPayload = decodeURIComponent(
-            window
-                .atob(base64)
-                .split('')
-                .map(function (c) {
-                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-                })
-                .join('')
-        );
-
-        return JSON.parse(jsonPayload);
-    }
 </script>
 
 <nav>
     <ToggleTheme />
 </nav>
 <div class="center">
-    <form class="form" on:submit|preventDefault={login}>
+    <form class="form" on:submit|preventDefault={APIlogin}>
         <span class="title"> Login </span>
+
         <div class="input-container">
-            <input id="email" class="input" bind:value={email} type="text" placeholder=" " />
+            <input id="email" class="input" bind:value={email} type="text" placeholder="write your Email" />
             <label for="email" class="label">Email</label>
         </div>
+
         <div class="input-container">
-            <input id="password" class="input" bind:value={password} type="password" placeholder=" " />
+            <input id="password" class="input" bind:value={password} type="password" placeholder="type your secret password" />
             <label for="password" class="label">Password</label>
         </div>
+
         <button type="text" class="submit">submit</button>
     </form>
 </div>

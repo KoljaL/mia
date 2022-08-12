@@ -1,6 +1,5 @@
 <script>
     import { writable } from 'svelte/store';
-
     import { User } from './util/auth.js';
 
     //

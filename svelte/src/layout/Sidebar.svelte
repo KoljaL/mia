@@ -1,4 +1,6 @@
 <script>
+    import active from 'svelte-spa-router/active';
+    import { link } from 'svelte-spa-router';
     function closeSidebar() {
         //TODO close sidebar only on small screens
         // window.document.body.classList.toggle('showSidebar');
@@ -7,8 +9,8 @@
 
 <aside>
     <nav>
-        <a on:click={closeSidebar} href="#/">Home</a>
-        <a on:click={closeSidebar} href="#/customer">Customer</a>
+        <a on:click={closeSidebar} use:link use:active href="/">Home</a>
+        <a on:click={closeSidebar} use:link use:active href="/customer">Customer</a>
     </nav>
 </aside>
 
@@ -35,6 +37,10 @@
         font-size: 1.25rem;
         line-height: 1.75rem;
         color: var(--text-prim);
+    }
+
+    :global(a.active) {
+        color: red;
     }
 
     :global(body.showSidebar) aside {

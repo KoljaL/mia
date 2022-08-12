@@ -90,6 +90,14 @@ use Firebase\JWT\Key;
  */
 function generateJWT($payload)
 {
+    $payload['secretKey']  = 'bGS6lzFqvvSQ8ALbOxatm7/Vk7mLQyzqaS34Q4oR1ew=';
+    $payload['issuedAt']   = new DateTimeImmutable();
+    $payload['expire']     = $issuedAt->modify('+6 minutes')->getTimestamp();      // Add 60 seconds
+    $payload['serverName'] = "your.domain.name";
+    $payload['username']   = "username";
+
+
+
     global $conf;
     return JWT::encode($payload, $conf['JWTkey'], 'HS256');
 }

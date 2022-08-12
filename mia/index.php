@@ -98,6 +98,9 @@ switch ($url['endpoint']) {
             // verify JWT from barier and get user properties
             //
             $jwt ="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdGFmZl9pZCI6OCwicm9sZSI6MCwicGVybWlzc2lvbiI6MH0.tzH7VLleNEIq2pJM6tuLs2M2icQoLqpTDqOhrjdMNYc";
+            $request['token'] = "xxx";
+            print_r($_SERVER['HTTP_AUTHORIZATION']);
+            exit;
             $user = readJWT($jwt);
             $response['user'] = $user;
             // pprint($user, 'User');

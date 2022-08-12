@@ -2,7 +2,19 @@
     import { onMount } from 'svelte';
     import axios from 'axios';
     import { fade } from 'svelte/transition';
+    import { writable } from 'svelte/store';
+    import { User, Token } from './../util/auth.js';
+    import { push } from 'svelte-spa-router';
 
+    if ($User === false) {
+        push('/');
+    }
+    // console.log($Token);
+
+    //
+    // get the customer ID from the link params
+    // and add it as value after the endpoint
+    //
     export let params = {};
     let customerID;
     if (null === params.id) {
@@ -10,6 +22,8 @@
     } else {
         customerID = '/' + params.id;
     }
+
+    // define vars for the functions
     let data;
     let customers = [];
     let error = null;
@@ -18,10 +32,13 @@
         getCustomerData(customerID);
     });
 
-    async function getCustomerData(id = '') {
+    async function getCustomerData(customerID) {
+        let auth = {
+            headers: { Authorization: `Bearer $Token` },
+        };
         try {
-            const res = await axios.get('http://localhost:9090/mia/customer' + customerID);
-            console.log(res);
+            const res = await axios.get('http://localhost:9090/mia/customer' + customerID, auth);
+            // console.log(res);
             data = res.data.data;
             customers = res.data.data;
         } catch (e) {

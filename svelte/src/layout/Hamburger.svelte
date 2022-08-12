@@ -4,11 +4,11 @@
     }
 </script>
 
-<button class="hamburger" on:click={toggleSidebar}>
+<div class="hamburger" on:click={toggleSidebar}>
     <div class="hamburger-box">
         <div class="hamburger-inner" />
     </div>
-</button>
+</div>
 
 <style>
     .hamburger {
