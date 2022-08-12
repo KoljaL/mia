@@ -3,3 +3,7 @@
    # RewriteRule    ^$ svelte/dist/    [L]
    # RewriteRule    (.*) svelte/dist/$1 [L]
 </IfModule>
+
+ <IfModule mod_headers.c>
+   Header set Access-Control-Allow-Origin "*"
+ </IfModule>

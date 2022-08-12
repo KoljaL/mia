@@ -34,10 +34,11 @@
 
     async function getCustomerData(customerID) {
         let auth = {
-            headers: { Authorization: `Bearer $Token` },
+            headers: { Authorization: `Bearer ` + $Token },
         };
         try {
-            const res = await axios.get('http://localhost:9090/mia/customer' + customerID, auth);
+            axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+            const res = await axios.get('http://localhost:8888/mia/mia/customer' + customerID, auth);
             // console.log(res);
             data = res.data.data;
             customers = res.data.data;
