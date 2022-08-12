@@ -5,7 +5,9 @@
     import { writable } from 'svelte/store';
     import { User, Token } from './../util/auth.js';
     import { push } from 'svelte-spa-router';
-
+    import Icon from 'svelte-icon';
+    import home from './../../public/img/zondicons/home.svg?raw';
+    import phone from './../../public/img/evaicons/phone.svg?raw';
     if ($User === false) {
         push('/');
     }
@@ -52,85 +54,71 @@
     <p style="color: red">{error.message}</p>
 {:else}
     <!-- <pre>	{JSON.stringify(data, null, 2)}</pre> -->
-    <div transition:fade={{ delay: 50, duration: 200 }} class="cardHolder ">
+    <div transition:fade={{ delay: 50, duration: 200 }} class="cardWrapper ">
         {#each customers as customer}
-            <div class="cardx">
-                <figure>
-                    <img src={customer.avatar} alt="Shoes" />
-                </figure>
-                <div class="cardBody">
-                    <a class="cardTitle" on:click={getCustomerData(customer.id)} href="#/customer/{customer.id}">{customer.name}</a>
-                    <p>{@html customer.address.replace('\n', '<br />')}</p>
-                </div>
-                <div class="cardFooter">
-                    <button class="btnx">{customer.email}</button>
-                    <button class="btnx">01234 - 2345</button>
-                </div>
-            </div>
+            <section>
+                <aside>
+                    <div class="cardContent">
+                        <img alt="HTML only" src={customer.avatar} height="100" />
+                        <div class="cardText">
+                            <h3><a class="cardTitle" on:click={getCustomerData(customer.id)} href="#/customer/{customer.id}">{customer.name}</a></h3>
+                            <p>{@html customer.address.replace('\n', '<br />')}</p>
+                        </div>
+                    </div>
+                    <div class="cardContacts">
+                        <a href="mailto:{customer.email}"><em><span class="cardEmail">{customer.email}</span></em></a>
+                        <a href="call:{customer.email}"><em><Icon data={phone} size="25px" /> </em></a>
+                    </div>
+                </aside>
+            </section>
         {/each}
     </div>
 {/if}
 
 <style>
-    .cardHolder {
+    section aside {
+        min-width: 300px;
+        max-width: 450px;
+    }
+    .cardWrapper {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
     }
-    .cardx {
+    .cardContent {
         position: relative;
         display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        border-radius: 1rem;
-        background-color: var(--bg-seco);
-        border: 1px solid var(--border-prim);
-        width: 20rem;
-        margin-bottom: 2rem;
     }
-    .cardx figure {
-        padding: 2.5rem;
-        padding-bottom: 0;
+    .cardText {
+        padding-left: 1rem;
+        margin-top: -1rem;
     }
-    .cardx img {
-        border-radius: 0.75rem;
-        width: 50px;
-        height: auto;
-    }
-    .cardx .cardBody {
-        text-align: center;
+    .cardContacts {
         display: flex;
-        flex: 1 1 auto;
-        flex-direction: column;
-        padding: 2rem;
+        justify-content: space-between;
         gap: 0.5rem;
-        align-items: center;
     }
-    .cardx .cardTitle {
-        font-size: 1.5em;
+    .cardContacts a {
+        min-width: 25px;
+        /* max-width: max-content; */
     }
 
-    .cardFooter {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        justify-content: space-around;
-        padding-bottom: 1rem;
-    }
-    .btnx {
-        color: white;
-        background-color: var(--success);
-        border-radius: 5px;
-        font-size: 17px;
-        padding: 6px 18px;
-        border: none;
-        display: inline-block;
-        padding: 8px 16px;
-        vertical-align: middle;
+    .cardContacts em {
+        max-width: calc(100% - 30px);
         overflow: hidden;
-        text-decoration: none;
-        text-align: center;
-        cursor: pointer;
+        padding-right: 0.75rem;
         white-space: nowrap;
+        /* max-width: max-content; */
+    }
+
+    .cardEmail {
+        padding-right: 0.5rem;
+
+        /* display: inline-block; */
+        /* overflow: hidden; */
+    }
+
+    :global(.cardWrapper a svg) {
+        margin-bottom: -5px;
     }
 </style>

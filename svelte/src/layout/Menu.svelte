@@ -11,5 +11,6 @@
 <style>
     nav {
         display: flex;
+        margin: 0;
     }
 </style>

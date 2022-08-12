@@ -12,6 +12,7 @@
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.7",
     "svelte": "^3.46.4",
+    "svelte-icon": "^1.2.4",
     "vite": "^2.8.6"
   },
   "dependencies": {

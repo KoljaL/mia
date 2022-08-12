@@ -307,7 +307,8 @@ button {
     font-weight: bold;
     line-height: var(--line-height);
     margin: 0.5rem 0;
-    padding: 1rem 2rem;
+    padding: .5rem;
+    font-style: normal;
 }
 
 button {
@@ -337,7 +338,8 @@ a i {
     border-radius: var(--border-radius);
     color: var(--color-link);
     display: inline-block;
-    padding: 1rem 2rem;
+    padding: .5rem;
+    font-style: normal;
 }
 
 article aside a {

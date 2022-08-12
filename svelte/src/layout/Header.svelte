@@ -19,6 +19,9 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
         height: 3rem;
         position: fixed;
         z-index: 50;
@@ -27,5 +30,6 @@
     }
     nav {
         display: flex;
+        margin: 0;
     }
 </style>

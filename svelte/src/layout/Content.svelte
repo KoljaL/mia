@@ -16,14 +16,15 @@
         background: var(--bg-tert);
         overflow: auto;
         height: 100vh;
-        padding: 1rem;
+        padding: 0;
         padding-top: 4rem;
+        margin: 0;
         max-width: 100vw;
     }
     :global(body.showSidebar) main {
         position: relative;
-        left: 15rem;
-        max-width: calc(100vw - 15rem);
+        left: 12rem;
+        width: calc(100vw - 12rem);
         transition: left 0.7s ease-in-out;
     }
 </style>
