@@ -37,7 +37,7 @@
             headers: { Authorization: `Bearer ` + $Token },
         };
         try {
-            axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+            // axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
             const res = await axios.get('http://localhost:8888/mia/mia/customer' + customerID, auth);
             // console.log(res);
             data = res.data.data;

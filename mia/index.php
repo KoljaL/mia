@@ -4,45 +4,45 @@
 // preflight for CORS
 // https://github.com/mikecao/flight/issues/425
 //
-if ('OPTIONS' === $_SERVER['REQUEST_METHOD']) {
-    // header('Access-Control-Allow-Origin: *');
-    // header('Access-Control-Allow-Headers: *');
+// if ('OPTIONS' === $_SERVER['REQUEST_METHOD']) {
+//     header('Access-Control-Allow-Origin: *');
+//     // header('Access-Control-Allow-Headers: *');
 
-    // header('Access-Control-Allow-Origin: http://localhost:8888');
-    // header('Access-Control-Allow-Methods: OPTIONS');
-    // header('Access-Control-Allow-Headers: authorization');
-
-
-    header('Access-Control-Allow-Origin, http://localhost:8888/mia/mia/customer');
-    header('Access-Control-Allow-Credentials, true');
-    header('Access-Control-Allow-Methods, GET,HEAD,OPTIONS,POST,PUT');
-    header('Access-Control-Allow-Headers, Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
+//     // header('Access-Control-Allow-Origin: http://localhost:8888');
+//     // header('Access-Control-Allow-Methods: *');
+//     // header('Access-Control-Allow-Headers: authorization');
 
 
-    header('Access-Control-Max-Age: 1728000');
-    die();
+//     // header('Access-Control-Allow-Origin, http://localhost:8888/mia/mia/customer');
+//     header('Access-Control-Allow-Credentials, true');
+//     header('Access-Control-Allow-Methods, GET,HEAD,OPTIONS,POST,PUT');
+//     header('Access-Control-Allow-Headers, Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
+
+
+//     header('Access-Control-Max-Age: 1728000');
+//     die();
+// }
+
+
+// Allow from any origin
+if (isset($_SERVER['HTTP_ORIGIN'])) {
+    // Decide if the origin in $_SERVER['HTTP_ORIGIN'] is one
+    // you want to allow, and if so:
+    header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+    header('Access-Control-Allow-Credentials: true');
+    header('Access-Control-Max-Age: 86400');    // cache for 1 day
 }
-
-
-// // Allow from any origin
-// if (isset($_SERVER['HTTP_ORIGIN'])) {
-//     // Decide if the origin in $_SERVER['HTTP_ORIGIN'] is one
-//     // you want to allow, and if so:
-//     header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-//     header('Access-Control-Allow-Credentials: true');
-//     header('Access-Control-Max-Age: 86400');    // cache for 1 day
-// }
-// // Access-Control headers are received during OPTIONS requests
-// if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-//     if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD'])) {
-//         // may also be using PUT, PATCH, HEAD etc
-//         header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-//     }
-//     if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'])) {
-//         header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
-//     }
-//     exit(0);
-// }
+// Access-Control headers are received during OPTIONS requests
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD'])) {
+        // may also be using PUT, PATCH, HEAD etc
+        header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+    }
+    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'])) {
+        header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+    }
+    exit(0);
+}
 
 
 //

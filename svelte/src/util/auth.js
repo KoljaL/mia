@@ -43,6 +43,8 @@ User.login = function(payload, token) {
     Avatar = writable(payload.avatar);
     localStorage.setItem("Avatar", payload.avatar);
     User.set(true)
+    push('/');
+
 }
 
 

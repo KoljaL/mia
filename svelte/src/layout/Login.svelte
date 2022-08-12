@@ -11,8 +11,10 @@
     // call API login and receive JWT
     //
     async function APIlogin() {
+        axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+
         axios
-            .post('http://localhost:9090/mia/login', {
+            .post('http://localhost:8888/mia/mia/login', {
                 email: email,
                 password: password,
             })

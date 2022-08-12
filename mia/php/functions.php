@@ -33,7 +33,8 @@ function getEndpoint()
     $api               = array_search('mia', $uri);
     // pprint($uri);
 
-    $array = array_slice($uri, $api+1);
+    // TODO plus 2 because of missing rewriting /mia/mia
+    $array = array_slice($uri, $api+2);
     $array = replace_key($array, 0, 'endpoint');
     $array = replace_key($array, 1, 'value');
     // TODO makes CHORS error, but why?
@@ -90,15 +91,15 @@ use Firebase\JWT\Key;
  */
 function generateJWT($payload)
 {
+    global $conf;
+
     $payload['secretKey']  = 'bGS6lzFqvvSQ8ALbOxatm7/Vk7mLQyzqaS34Q4oR1ew=';
-    $payload['issuedAt']   = new DateTimeImmutable();
+    $issuedAt              = new DateTimeImmutable();
+    $payload['issuedAt']   = $issuedAt;
     $payload['expire']     = $issuedAt->modify('+6 minutes')->getTimestamp();      // Add 60 seconds
     $payload['serverName'] = "your.domain.name";
     $payload['username']   = "username";
 
-
-
-    global $conf;
     return JWT::encode($payload, $conf['JWTkey'], 'HS256');
 }
 

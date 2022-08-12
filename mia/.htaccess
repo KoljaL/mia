@@ -1,7 +1,23 @@
-RewriteEngine On
-RewriteCond %{HTTP:Authorization} ^(.+)$
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ ./index.php?path=$1 [NC,L,QSA]
 
- <IfModule mod_headers.c>
-   Header set Access-Control-Allow-Origin "*"
- </IfModule>
+
+# RewriteEngine On
+# RewriteCond %{HTTP:Authorization} ^(.+)$
+# RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+#  <IfModule mod_headers.c>
+#    Header set Access-Control-Allow-Origin "*"
+#  </IfModule>
+
+#   <IfModule mod_headers.c>
+#     Header always set Access-Control-Allow-Origin: "*"
+#     Header always set Access-Control-Allow-Methos: "GET, OPTIONS"
+#     Header always set Access-Conrtol-Allow-Headers: "api-key, content-type"
+# </IfModule>
+
+# RewriteEngine On
+# RewriteCond %{REQUEST_METHOD} OPTIONS
+# RewriteRule ^(.*)$ $1 [R=200,L]
