@@ -20,6 +20,12 @@ export default {
             import ('./routes/Customer.svelte')
     }),
 
+    // Wrapping the Author component
+    '/profile/:id?': wrap({
+        asyncComponent: () =>
+            import ('./routes/Profile.svelte')
+    }),
+
 
     // '/customer/:id?': Customer,
 

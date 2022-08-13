@@ -150,7 +150,7 @@ switch ($url['endpoint']) {
             //     exit;
             // }
 
-            // $jwt = explode(' ', $_SERVER['HTTP_AUTHORIZATION'])[1];
+            $jwt = explode(' ', $_SERVER['HTTP_AUTHORIZATION'])[1];
             // echo $jwt;
             $user = readJWT($jwt);
             $response['user'] = $user;

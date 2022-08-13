@@ -16,8 +16,27 @@ use RedBeanPHP\R as R;
  * @return JSON with customerdata
  */
 
-if (!isset($url['value'])) {
-    $staff_id =   $user['staff_id'];
+//
+// admin user get all customer
+//
+if ($user['role'] === "0" && !isset($url['value'])) {
+    $allCustomer = R::getAll('SELECT * FROM customer');
+
+    // collect keys
+    $data = [];
+    foreach ($allCustomer as &$customer) {
+        $data[] = array_intersect_key($customer, array_flip(['id', 'name','email','phone','avatar','address']));
+    }
+
+    // ad data to response
+    $response['data'] = $data;
+    returnJSON($response);
+}
+//
+// get a all customer from current staff
+//
+elseif (!isset($url['value'])) {
+    $staff_id = $user['staff_id'];
     $allCustomer = R::getAll('SELECT * FROM customer WHERE staff_id = ?', [$staff_id]);
 
     // pprint($allCustomer);
@@ -29,26 +48,42 @@ if (!isset($url['value'])) {
         returnJSON($response);
     }
 
-    // remove some keys
+
+    // collect keys
+    $data = [];
     foreach ($allCustomer as &$customer) {
-        unset($customer['password']);
+        $data[] = array_intersect_key($customer, array_flip(['id', 'name','email','phone','avatar','address']));
     }
 
+
     // ad data to response
-    $response['data'] = $allCustomer;
+    $response['data'] = $data;
 
     // return data to frontend
     returnJSON($response);
 }
 
+//
+// get full data of single customer
+//
+elseif (is_numeric($url['value'])) {
+    $customer = R::load('customer', $url['value']);
+    if ($customer) {
+        $data = $customer->export();
+        unset($data['password']);
 
-if (is_numeric($url['value'])) {
-    $response['data'][0] = getCustomer($url['value']);
-    returnJSON($response);
-} else {
+        $response['data'][0] = $data;
+        returnJSON($response);
+    }
+}
+
+//
+// if nothing found, return message
+//
+else {
     $response['data'] = '';
     $response['status'] = 400;
-    $response['message'] = 'no numeric customer_id';
+    $response['message'] = 'no customer data found';
     returnJSON($response);
 }
 
@@ -56,10 +91,10 @@ if (is_numeric($url['value'])) {
 
 
 
-function getCustomer($id)
-{
-    $customer = R::load('customer', $id);
-    $data = $customer->export();
-    unset($data['password']);
-    return $data;
-}
+// function getCustomer($id)
+// {
+//     $customer = R::load('customer', $id);
+//     $data = $customer->export();
+//     unset($data['password']);
+//     return $data;
+// }

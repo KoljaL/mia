@@ -28,3 +28,5 @@ PHP folder for API requests, SQLite Database file and uploaded files
 - https://sodocumentation.net/php/topic/10847/how-to-break-down-an-url
 - https://stackoverflow.com/questions/70291849/adminer-autologin
 - https://github.com/sepkhanyan/custom-mvc/blob/main/public/index.php
+- https://webmasters.stackexchange.com/questions/125327/how-to-configure-htaccess-to-rewrite-all-requests-into-a-folder-except-a-list
+- https://www.webcellent.com/blog/modrewrite-snippets-referenz/

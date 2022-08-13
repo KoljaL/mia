@@ -8,13 +8,19 @@
 - https://github.com/alexbaumhoer/svelte-jwt-decode
 - https://stackoverflow.com/questions/38552003/how-to-decode-jwt-token-in-javascript-without-using-a-library
 - https://stackoverflow.com/questions/65724373/svelte-unable-to-get-imported-unused-css-purged
+- https://vitejs.dev/guide/env-and-mode.html
+- https://medium.com/dev-cafe/how-to-setup-env-variables-to-your-svelte-js-app-c1579430f032
+- https://www.donielsmith.com/blog/2020-05-11-how-to-use-dotenv-with-svelte-3/
+- https://stackoverflow.com/questions/69762299/how-to-define-environment-variables-in-svelte
+- https://github.com/svelte-brasil/svelte-routify-dotenv-sass-prettier-test
 
 
 ## installed libraries
-- Tailwind
-- DaisyUI
 - Axios
 - [SPA-Router](https://github.com/ItalyPaleAle/svelte-spa-router) 
+- [Svelte-Icons](https://github.com/cristovao-trevisan/svelte-icon)
+- [Zondi-Icons](https://www.zondicons.com/)
+- [Eva-Icons](https://github.com/akveo/eva-icons)
 
 
 ## Functions & Components

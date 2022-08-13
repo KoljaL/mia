@@ -14,9 +14,9 @@
 
 <aside class="sidebar">
     <nav>
-        <a on:click={closeSidebar} use:link use:active href="/">
+        <a on:click={closeSidebar} use:link use:active href="/profile">
             <Icon data={home} />
-            Home
+            Profile
         </a>
         <a on:click={closeSidebar} use:link use:active href="/customer">
             <Icon data={people} size="23px" style="margin-bottom:-2px;" />

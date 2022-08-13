@@ -166,3 +166,47 @@ Stack trace:
 #1 /Applications/MAMP/htdocs/mia/mia/index.php(119): require('/Applications/M...')
 #2 {main}
   thrown in /Applications/MAMP/htdocs/mia/mia/php/functions.php on line 96
+[12-Aug-2022 23:12:59 UTC] PHP Warning:  Undefined array key "HTTP_AUTHORIZATION" in /Applications/MAMP/htdocs/mia/mia/index.php on line 153
+[12-Aug-2022 23:12:59 UTC] PHP Warning:  Undefined array key 1 in /Applications/MAMP/htdocs/mia/mia/index.php on line 153
+[12-Aug-2022 23:12:59 UTC] PHP Fatal error:  Uncaught TypeError: Firebase\JWT\JWT::decode(): Argument #1 ($jwt) must be of type string, null given, called in /Applications/MAMP/htdocs/mia/mia/php/functions.php on line 120 and defined in /Applications/MAMP/htdocs/mia/mia/vendor/firebase/php-jwt/src/JWT.php:90
+Stack trace:
+#0 /Applications/MAMP/htdocs/mia/mia/php/functions.php(120): Firebase\JWT\JWT::decode(NULL, Object(Firebase\JWT\Key))
+#1 /Applications/MAMP/htdocs/mia/mia/index.php(155): readJWT(NULL)
+#2 {main}
+  thrown in /Applications/MAMP/htdocs/mia/mia/vendor/firebase/php-jwt/src/JWT.php on line 90
+[13-Aug-2022 09:28:12 UTC] PHP Warning:  Undefined variable $id in /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php on line 62
+[13-Aug-2022 09:43:33 UTC] PHP Fatal error:  Uncaught TypeError: Illegal offset type in /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php:46
+Stack trace:
+#0 /Applications/MAMP/htdocs/mia/mia/index.php(167): require()
+#1 {main}
+  thrown in /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php on line 46
+[13-Aug-2022 09:48:31 UTC] PHP Fatal error:  Uncaught ArgumentCountError: array_flip() expects exactly 1 argument, 2 given in /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php:46
+Stack trace:
+#0 /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php(46): array_flip('id', 'name')
+#1 /Applications/MAMP/htdocs/mia/mia/index.php(167): require('/Applications/M...')
+#2 {main}
+  thrown in /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php on line 46
+[13-Aug-2022 09:48:54 UTC] PHP Parse error:  syntax error, unexpected identifier "‚", expecting ")" in /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php on line 46
+[13-Aug-2022 09:50:00 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php:55) in /Applications/MAMP/htdocs/mia/mia/php/functions.php on line 220
+[13-Aug-2022 09:50:00 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php:55) in /Applications/MAMP/htdocs/mia/mia/php/functions.php on line 221
+[13-Aug-2022 09:50:00 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php:55) in /Applications/MAMP/htdocs/mia/mia/php/functions.php on line 222
+[13-Aug-2022 09:50:00 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php:55) in /Applications/MAMP/htdocs/mia/mia/php/functions.php on line 223
+[13-Aug-2022 09:50:00 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php:55) in /Applications/MAMP/htdocs/mia/mia/php/functions.php on line 224
+[13-Aug-2022 09:50:22 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php:55) in /Applications/MAMP/htdocs/mia/mia/php/functions.php on line 220
+[13-Aug-2022 09:50:22 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php:55) in /Applications/MAMP/htdocs/mia/mia/php/functions.php on line 221
+[13-Aug-2022 09:50:22 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php:55) in /Applications/MAMP/htdocs/mia/mia/php/functions.php on line 222
+[13-Aug-2022 09:50:22 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php:55) in /Applications/MAMP/htdocs/mia/mia/php/functions.php on line 223
+[13-Aug-2022 09:50:22 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php:55) in /Applications/MAMP/htdocs/mia/mia/php/functions.php on line 224
+[13-Aug-2022 09:51:38 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php:40) in /Applications/MAMP/htdocs/mia/mia/php/functions.php on line 220
+[13-Aug-2022 09:51:38 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php:40) in /Applications/MAMP/htdocs/mia/mia/php/functions.php on line 221
+[13-Aug-2022 09:51:38 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php:40) in /Applications/MAMP/htdocs/mia/mia/php/functions.php on line 222
+[13-Aug-2022 09:51:38 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php:40) in /Applications/MAMP/htdocs/mia/mia/php/functions.php on line 223
+[13-Aug-2022 09:51:38 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/mia/mia/endpoints/customer.php:40) in /Applications/MAMP/htdocs/mia/mia/php/functions.php on line 224
+[13-Aug-2022 11:46:48 UTC] PHP Warning:  Undefined array key "HTTP_AUTHORIZATION" in /Applications/MAMP/htdocs/mia/mia/index.php on line 153
+[13-Aug-2022 11:46:48 UTC] PHP Warning:  Undefined array key 1 in /Applications/MAMP/htdocs/mia/mia/index.php on line 153
+[13-Aug-2022 11:46:48 UTC] PHP Fatal error:  Uncaught TypeError: Firebase\JWT\JWT::decode(): Argument #1 ($jwt) must be of type string, null given, called in /Applications/MAMP/htdocs/mia/mia/php/functions.php on line 120 and defined in /Applications/MAMP/htdocs/mia/mia/vendor/firebase/php-jwt/src/JWT.php:90
+Stack trace:
+#0 /Applications/MAMP/htdocs/mia/mia/php/functions.php(120): Firebase\JWT\JWT::decode(NULL, Object(Firebase\JWT\Key))
+#1 /Applications/MAMP/htdocs/mia/mia/index.php(155): readJWT(NULL)
+#2 {main}
+  thrown in /Applications/MAMP/htdocs/mia/mia/vendor/firebase/php-jwt/src/JWT.php on line 90
