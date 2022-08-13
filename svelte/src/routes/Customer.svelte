@@ -106,10 +106,10 @@
         {#each customers as customer}
             <section id={customer.id}>
                 <aside>
-                    <div class="cardContent">
+                    <div class="cardContent" on:click={getAdditionalData(customer.id)}>
                         <img alt="HTML only" src={customer.avatar} height="100" />
                         <div class="cardText">
-                            <h3><a class="cardTitle" on:click={getAdditionalData(customer.id)} href="#/customer/{customer.id}">{customer.name}</a></h3>
+                            <h3><a class="cardTitle" href="#/customer/{customer.id}">{customer.name}</a></h3>
                             <p>{@html customer.address.replace('\n', '<br />')}</p>
                         </div>
                     </div>
@@ -142,7 +142,17 @@
         max-width: 450px;
         transition: width 0.5s;
     }
+    section {
+        /* flex: 1; */
+        min-width: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: transform 0.2s, flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11), background 0.2s;
+    }
     :global(.fullWidth) {
+        flex-basis: 100%;
         max-width: 90% !important;
         width: 90% !important;
         transition: width 0.5s;
@@ -151,6 +161,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
+        position: relative;
     }
     .cardContent {
         position: relative;
