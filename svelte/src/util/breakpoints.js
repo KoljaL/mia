@@ -1,7 +1,7 @@
 /**
- *
- *  The above code is adding a class to the body of the page depending on the width of the browser.
- *
+ * title toggle matchMedia
+ * The above code is adding a class to the body of the page depending on the width of the browser.
+ * 
  */
 export const toggleView = function() {
     const breakpoints = [{

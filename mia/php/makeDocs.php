@@ -1,6 +1,6 @@
 <?php
 
-
+// TODO
 //
 // PHP DOCS
 //
@@ -64,6 +64,9 @@ function run($startfolder, $docfile, $exclude, $extensions)
 
         // get php file
         $fileContent = file_get_contents($file);
+
+        // add space to fileContent for regex, why?
+        $fileContent = ' '.$fileContent;
 
         $phpDoc = [];
 
