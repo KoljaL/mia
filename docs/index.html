@@ -1,169 +1,182 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.1/markdown-it.min.js" integrity="sha512-SYfDUYPg5xspsG6OOpXU366G8SZsdHOhqk/icdrYJ2E/WKZxPxze7d2HD3AyXpT7U22PZ5y74xRpqZ6A2bJ+kQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-</script>
-<style>
-     ::-webkit-scrollbar {
-        display: none;
-    }
-    
-    * {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-    
-    body {
-        width: 100vw;
-        height: 100vh;
-        padding: 1em;
-        background-color: #27272b;
-        color: #d7d7d8;
-        margin: 0;
-        padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-        font-size: 16px;
-        line-height: 1.5;
-        /* font-size: 14px; */
-        /* line-height: 22px; */
-        color: #d7d7d8;
-    }
-    
-    main {
-        padding: 1rem;
-        padding-top: 3rem;
-        width: 500px;
-        margin-inline: auto;
-    }
-    
-    h3 code {
-        background-color: #2c2c31;
-        border-radius: 5px;
-        padding: 5px 10px;
-        font-size: 14.5px;
-        font-weight: normal;
-        border: 1px solid #1b1b20;
-        letter-spacing: 0.4px;
-    }
-    
-    p strong {
-        color: #cb7832;
-    }
-    
-    p code {
-        color: #6a8759;
-    }
-    
-    header {
-        position: fixed;
-        height: 45px;
-        width: 100vw;
-        background-color: #232327;
-        color: #fff;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        z-index: 9;
-        border-bottom: 1px solid #1b1b20;
-    }
-    
-    header .wrapper {
-        width: 600px;
-        margin-inline: auto;
-    }
-    
-    header .link {
-        /* color: #c9ac57; */
-        text-decoration: none;
-        font-size: 14px;
-        background-color: #2a2a30;
-        padding: 6px 15px;
-        border-radius: 5px;
-        border: 1px solid #1b1b20;
-        cursor: pointer;
-    }
-    
-    header .svelte {
-        color: hsl(19, 67%, 45%);
-    }
-    
-    header .api {
-        color: #8892BF;
-        ;
-    }
-    
-    header .link:hover,
-    a:hover {
-        filter: brightness(130%);
-    }
-    
-    header .logo {
-        display: inline-block;
-        margin-left: 1rem;
-        margin-right: 2rem;
-        color: #988cca;
-        text-shadow: 0px 2px 3px #1b1c1f;
-        font-size: 22px;
-        margin: 10px 50px 10px 0px;
-        cursor: pointer;
-    }
-    
-    header .ghLogo {
-        position: absolute;
-        right: 1em;
-        top: 8px;
-        width: 25px;
-        height: 25px;
-    }
-    
-    h1 {
-        color: #988cca;
-        text-shadow: 0px 2px 3px #1b1c1f;
-        font-size: 22px;
-        margin: 20px 0px 15px 0px;
-    }
-    
-    h2 {
-        font-size: 19px;
-        font-weight: bold;
-        color: #c19c90;
-        margin-top: 55px;
-        margin-bottom: 10px;
-    }
-    
-    h3 {
-        margin-top: 35px;
-        color: #c9ac57;
-        font-size: 15px;
-    }
-    
-    a {
-        color: #2798e4;
-        text-decoration: none;
-    }
-</style>
-<header>
-    <div class="wrapper">
-        <span class="logo" onclick="load('./../readme.md')">Manual Impulsed Api</span>
-        <span class="link svelte" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/svelte/readme.md')">Svelte</span>
-        <span class="link svelte" onclick="load('./md/Svelte-Docs.md')">Docs</span>
-        <span class="link api" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/mia/readme.md')">API</span>
-        <span class="link api" onclick="load('./md/API-Docs.md')">Docs</span>
-        <span class="ghLogo">
-      <a href="https://github.com/KoljaL/mia/">
-        <img src="./img/GitHub.png" alt="GitHub Repo" height="25px">
-      </a>
-    </span>
-    </div>
-</header>
-<main id=main></main>
-<script>
-    var md = window.markdownit();
-    load('https://raw.githubusercontent.com/KoljaL/mia/main/README.md')
+<!DOCTYPE html>
+<html lang="en">
 
-    function load(file) {
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mia & Svelte</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.1/markdown-it.min.js" integrity="sha512-SYfDUYPg5xspsG6OOpXU366G8SZsdHOhqk/icdrYJ2E/WKZxPxze7d2HD3AyXpT7U22PZ5y74xRpqZ6A2bJ+kQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+         ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        * {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        body {
+            width: 100vw;
+            height: 100vh;
+            padding: 1em;
+            background-color: #27272b;
+            color: #d7d7d8;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 16px;
+            line-height: 1.5;
+            /* font-size: 14px; */
+            /* line-height: 22px; */
+            color: #d7d7d8;
+        }
+        
+        main {
+            padding: 1rem;
+            padding-top: 3rem;
+            width: 500px;
+            max-width: 95vh;
+            margin-inline: auto;
+        }
+        
+        h3 code {
+            background-color: #2c2c31;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 14.5px;
+            font-weight: normal;
+            border: 1px solid #1b1b20;
+            letter-spacing: 0.4px;
+        }
+        
+        p strong {
+            color: #cb7832;
+        }
+        
+        p code {
+            color: #6a8759;
+        }
+        
+        header {
+            position: fixed;
+            height: 45px;
+            width: 100vw;
+            background-color: #232327;
+            color: #fff;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            z-index: 9;
+            border-bottom: 1px solid #1b1b20;
+        }
+        
+        header .wrapper {
+            width: 600px;
+            max-width: 100vh;
+            margin-inline: auto;
+        }
+        
+        header .link {
+            /* color: #c9ac57; */
+            text-decoration: none;
+            font-size: 14px;
+            background-color: #2a2a30;
+            padding: 6px 15px;
+            border-radius: 5px;
+            border: 1px solid #1b1b20;
+            cursor: pointer;
+        }
+        
+        header .svelte {
+            color: hsl(19, 67%, 45%);
+        }
+        
+        header .api {
+            color: #8892BF;
+            ;
+        }
+        
+        header .link:hover,
+        a:hover {
+            filter: brightness(130%);
+        }
+        
+        header .logo {
+            display: inline-block;
+            margin-left: 1rem;
+            margin-right: 2rem;
+            color: #988cca;
+            text-shadow: 0px 2px 3px #1b1c1f;
+            font-size: 22px;
+            margin: 10px 50px 10px 0px;
+            cursor: pointer;
+        }
+        
+        header .ghLogo {
+            position: absolute;
+            right: 1em;
+            top: 8px;
+            width: 25px;
+            height: 25px;
+        }
+        
+        h1 {
+            color: #988cca;
+            text-shadow: 0px 2px 3px #1b1c1f;
+            font-size: 22px;
+            margin: 20px 0px 15px 0px;
+        }
+        
+        h2 {
+            font-size: 19px;
+            font-weight: bold;
+            color: #c19c90;
+            margin-top: 55px;
+            margin-bottom: 10px;
+        }
+        
+        h3 {
+            margin-top: 35px;
+            color: #c9ac57;
+            font-size: 15px;
+        }
+        
+        a {
+            color: #2798e4;
+            text-decoration: none;
+        }
+    </style>
+</head>
 
-        fetch(file)
-            .then((response) => response.text())
-            .then((data) => md.render(data))
-            .then((markdown) => document.getElementById('main').innerHTML = markdown)
-    }
-</script>
+<body>
+
+    <header>
+        <div class="wrapper">
+            <span class="logo" onclick="load('./../readme.md')">Manual Impulsed Api</span>
+            <span class="link svelte" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/svelte/README.md')">Svelte</span>
+            <span class="link svelte" onclick="load('./md/Svelte-Docs.md')">Docs</span>
+            <span class="link api" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/mia/readme.md')">API</span>
+            <span class="link api" onclick="load('./md/API-Docs.md')">Docs</span>
+            <span class="ghLogo">
+        <a href="https://github.com/KoljaL/mia/">
+          <img src="./img/GitHub.png" alt="GitHub Repo" height="25px">
+        </a>
+      </span>
+        </div>
+    </header>
+    <main id=main></main>
+    <script>
+        var md = window.markdownit();
+        load('https://raw.githubusercontent.com/KoljaL/mia/main/README.md')
+
+        function load(file) {
+
+            fetch(file)
+                .then((response) => response.text())
+                .then((data) => md.render(data))
+                .then((markdown) => document.getElementById('main').innerHTML = markdown)
+        }
+    </script>
+</body>
