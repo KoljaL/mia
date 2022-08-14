@@ -1,2 +1,2 @@
-# mia
-manual impulsed api
+# MIA
+**M**anual **I**mpulsed **A**PI
