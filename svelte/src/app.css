@@ -348,12 +348,12 @@ a {
 
 a:active {
     filter: brightness(var(--active-brightness));
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 a:hover {
     filter: brightness(var(--hover-brightness));
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 a b,

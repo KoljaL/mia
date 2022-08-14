@@ -1,55 +1,42 @@
 <script>
     import { onMount } from 'svelte';
     import axios from 'axios';
-    import { fade } from 'svelte/transition';
+    import { fade, scale } from 'svelte/transition';
     import { writable } from 'svelte/store';
     import { User, Token } from './../util/auth.js';
     import { push } from 'svelte-spa-router';
     import Icon from 'svelte-icon';
-    import home from './../../public/img/zondicons/home.svg?raw';
+    import close from './../../public/img/evaicons/close.svg?raw';
     import phone from './../../public/img/evaicons/phone.svg?raw';
+    import CustomerSingle from './CustomerSingle.svelte';
     if ($User === false) {
         push('/');
     }
-    // console.log($Token);
-
-    export let params = {};
-    let customerID;
 
     // define vars for the functions
-    let data;
-    let addData = null;
+    let component;
+    let props;
+    let customerID;
+    let showCustomerSingle = null;
     let customers = [];
     let error = null;
     let auth = {
         headers: { Authorization: `Bearer ` + $Token },
     };
-    onMount(async () => {
-        //
-        // get the customer ID from the link params
-        // and add it as value after the endpoint
-        //
-        if (null === params.id) {
-            console.log('ONMOUNT ALL');
-            getAllCustomer();
-        } else {
-            console.log('ONMOUNT SINGLE');
-            getSingleCustomer(params.id);
 
-            // customerID = '/' + params.id;
-        }
+    //
+    // load on mount
+    //
+    onMount(async () => {
+        getAllCustomer();
     });
 
+    //
+    // load all customer data
+    //
     async function getAllCustomer() {
-        console.log(' ALL');
-        // let auth = {
-        //     headers: { Authorization: `Bearer ` + $Token },
-        // };
         try {
-            // axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
             const res = await axios.get('http://localhost:8888/mia/mia/customer', auth);
-            // console.log(res);
-            data = res.data.data;
             customers = res.data.data;
             // console.log(customers);
         } catch (e) {
@@ -57,79 +44,104 @@
         }
     }
 
-    async function getSingleCustomer(customerID) {
-        console.log(' SINGLE');
-        // let auth = {
-        //     headers: { Authorization: `Bearer ` + $Token },
-        // };
-        try {
-            // axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-            const res = await axios.get('http://localhost:8888/mia/mia/customer/' + customerID, auth);
-            // console.log(res);
-            data = res.data.data;
-            customers = res.data.data;
-        } catch (e) {
-            error = e;
-        }
+    //
+    // load singeCustomer overlay
+    //
+    async function loadCustomerSingle(customerID) {
+        component = CustomerSingle;
+        props = { customerID: customerID };
+        showCustomerSingle = true;
     }
 
-    async function getAdditionalData(customerID) {
-        let section = document.getElementById(customerID);
-        section.classList.add('fullWidth');
-        section.children[0].classList.add('fullWidth');
-        // console.log(section);
-
-        // let auth = {
-        //     headers: { Authorization: `Bearer ` + $Token },
-        // };
-        try {
-            const res = await axios.get('http://localhost:8888/mia/mia/customer/' + customerID, auth);
-            addData = res.data.data;
-        } catch (e) {
-            error = e;
-        }
-    }
-    function close(customerID) {
-        let section = document.getElementById(customerID);
-        section.classList.remove('fullWidth');
-        section.children[0].classList.remove('fullWidth');
-        addData = null;
+    //
+    //close singleCustomer overlay
+    //
+    function closeOverlay() {
+        console.log('tt');
+        showCustomerSingle = null;
     }
 </script>
 
-{#if error !== null}
-    <p style="color: red">{error.message}</p>
-{:else}
-    <!-- <pre>	{JSON.stringify(data, null, 2)}</pre> -->
-    <h2>Customer</h2>
-    <div transition:fade={{ delay: 0, duration: 0 }} class="cardWrapper ">
-        {#each customers as customer}
-            <section id={customer.id}>
-                <aside>
-                    <div class="cardContent" on:click={getAdditionalData(customer.id)}>
-                        <img alt="HTML only" src={customer.avatar} height="100" />
-                        <div class="cardText">
-                            <h3><a class="cardTitle" href="#/customer/{customer.id}">{customer.name}</a></h3>
-                            <p>{@html customer.address.replace('\n', '<br />')}</p>
+<div class="customerWrapper">
+    {#if error !== null}
+        <p style="color: red">{error.message}</p>
+    {:else}
+        <h2>Customer</h2>
+        <div transition:fade={{ delay: 0, duration: 0 }} class="cardWrapper ">
+            {#each customers as customer}
+                <section id={customer.id}>
+                    <aside>
+                        <div class="cardContent" on:click={loadCustomerSingle(customer.id)}>
+                            <img alt="HTML only" src={customer.avatar} height="100" />
+                            <div class="cardText">
+                                <h3 class="cardTitle" href="#/customer/{customer.id}">{customer.name}</h3>
+                                <p>{@html customer.address.replace('\n', '<br />')}</p>
+                            </div>
                         </div>
-                    </div>
-                    {#if addData !== null}
-                        <div class="addData">
-                            <button on:click={close(addData[0].id)}>X</button>
-                            {addData[0].id}
+
+                        <div class="cardContacts">
+                            <a href="mailto:{customer.email}"><em><span class="cardEmail">{customer.email}</span></em></a>
+                            <a href="call:{customer.email}"><em class="cardPhone"><Icon data={phone} size="25px" /> </em></a>
                         </div>
-                    {/if}
-                    <div class="cardContacts">
-                        <a href="mailto:{customer.email}"><em><span class="cardEmail">{customer.email}</span></em></a>
-                        <a href="call:{customer.email}"><em class="cardPhone"><Icon data={phone} size="25px" /> </em></a>
+                    </aside>
+                </section>
+            {/each}
+        </div>
+        {#if showCustomerSingle !== null}
+            <div class="overlayBackground" transition:fade>
+                <div class="overlayContent" transition:scale>
+                    <span class="closeOverlay" on:click={closeOverlay}>
+                        <Icon data={close} size="35px" />
+                    </span>
+                    <div class="customerSingle">
+                        <svelte:component this={component} {...props} />
                     </div>
-                </aside>
-            </section>
-        {/each}
-    </div>
-{/if}
+                </div>
+            </div>
+        {/if}
+    {/if}
+</div>
 
 <style>
+    .overlayBackground {
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.96);
+    }
+    .overlayContent {
+        position: relative;
+        width: 90vw;
+        height: 90vh;
+        background: var(--bg-seco);
+        border: 1px solid var(--color-bg-secondary);
+        border-radius: 1em;
+        box-shadow: var(--box-shadow) var(--color-bg-secondary);
+    }
+    .closeOverlay {
+        position: absolute;
+        top: 1em;
+        right: 1em;
+        cursor: pointer;
+        display: block;
+        width: 40px;
+        height: 40px;
+        z-index: 200;
+    }
+    .closeOverlay:hover {
+        filter: brightness(var(--hover-brightness));
+    }
+
+    .customerWrapper {
+        position: relative;
+    }
     h2 {
         text-align: center;
         position: sticky;
@@ -166,6 +178,7 @@
     .cardContent {
         position: relative;
         display: flex;
+        cursor: pointer;
     }
     img {
         min-height: 100px;

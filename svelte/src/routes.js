@@ -15,9 +15,15 @@ export default {
     }),
 
     // Wrapping the Author component
-    '/customer/:id?': wrap({
+    '/customer': wrap({
         asyncComponent: () =>
             import ('./routes/Customer.svelte')
+    }),
+
+    // Wrapping the Author component
+    '/customer/:id?': wrap({
+        asyncComponent: () =>
+            import ('./routes/CustomerSingle.svelte')
     }),
 
     // Wrapping the Author component

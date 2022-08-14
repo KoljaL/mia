@@ -30,3 +30,4 @@ PHP folder for API requests, SQLite Database file and uploaded files
 - https://github.com/sepkhanyan/custom-mvc/blob/main/public/index.php
 - https://webmasters.stackexchange.com/questions/125327/how-to-configure-htaccess-to-rewrite-all-requests-into-a-folder-except-a-list
 - https://www.webcellent.com/blog/modrewrite-snippets-referenz/
+- https://medium.com/@manishjungthapa/all-about-jwt-94d9a7b5e0d7
