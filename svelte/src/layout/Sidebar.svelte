@@ -25,7 +25,45 @@
     </nav>
 </aside>
 
+<footer>
+    <a on:click={closeSidebar} use:link use:active href="/profile">
+        <Icon data={home} />
+        Profile
+    </a>
+    <a on:click={closeSidebar} use:link use:active href="/customer">
+        <Icon data={people} size="23px" style="margin-bottom:-2px;" />
+        Customer
+    </a>
+</footer>
+
 <style>
+    footer {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        width: 100vw;
+        margin: 0 auto;
+        max-width: 100vw;
+        padding: 0;
+        justify-content: space-around;
+        z-index: 100;
+        background: var(--bg-prim);
+    }
+    :global(footer a.active) {
+        background-color: var(--bg-prim);
+        color: var(--color);
+    }
+
+    :global([data-view='small']) footer {
+        display: flex;
+    }
+    :global([data-view='small']) .sidebar {
+        display: none;
+    }
+    :global([data-view='small'] main) {
+        left: 0 !important;
+        width: 100vw !important;
+    }
     aside {
         left: -12rem;
         background-color: var(--bg-seco);

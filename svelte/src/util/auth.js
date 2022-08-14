@@ -43,11 +43,16 @@ User.login = function(payload, token) {
     Avatar = writable(payload.avatar);
     localStorage.setItem("Avatar", payload.avatar);
     User.set(true)
-    push('/');
+    push('/profile');
 
 }
 
-
+/**
+ * title test name
+ * incl description
+ * 
+ * @return redirect to login form
+ */
 //
 // User logout called in Menue.svelte
 //
