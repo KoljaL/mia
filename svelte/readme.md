@@ -33,7 +33,7 @@ In `./app.css` are the custom variables for every theme, they get importet into 
 
 ## Backend directory
 
-´´´
+```
 mia/
 ┣ db/
 ┃ ┗ database.sqlite
@@ -57,7 +57,7 @@ mia/
 ┣ index.php
 ┣ readme.md
 ┗ shema.md
-´´´
+```
 
 ## Frontend directory
 ```bash
