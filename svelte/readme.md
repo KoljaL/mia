@@ -31,31 +31,68 @@ Therefor an attribute is set to the body tag `<body data-theme="theme-dark">` an
 The theme-switch names, function & icon are defined in `./components/toggleTheme.svelte`. 
 In `./app.css` are the custom variables for every theme, they get importet into tailwind inside `./tailwind.config.js`.
 
+## Backend directory
+
+´´´
+mia/
+┣ db/
+┃ ┗ database.sqlite
+┣ endpoints/
+┃ ┣ customer.php
+┃ ┣ initDB.php
+┃ ┣ login.php
+┃ ┗ profile.php
+┣ php/
+┃ ┣ config.php
+┃ ┣ functions.php
+┃ ┣ functionsDB.php
+┃ ┣ makeDocs.php
+┃ ┗ pprint.php
+┣ .htaccess
+┣ API-Docs.md
+┣ composer.json
+┣ composer.lock
+┣ error.log
+┣ favicon.ico
+┣ index.php
+┣ readme.md
+┗ shema.md
+´´´
+
+## Frontend directory
 ```bash
-src
- ┣ components
- ┃ ┗ toggleTheme.svelte
- ┣ layout
- ┃ ┣ Content.svelte
- ┃ ┣ Hamburger.svelte
- ┃ ┣ Header.svelte
- ┃ ┣ Login.svelte
- ┃ ┣ Logo.svelte
- ┃ ┣ Menu.svelte
- ┃ ┗ Sidebar.svelte
- ┣ routes
- ┃ ┣ Customer.svelte
- ┃ ┣ CustomerSingle.svelte
- ┃ ┣ Home.svelte
- ┃ ┣ NotFound.svelte
- ┃ ┗ Profile.svelte
- ┣ util
- ┃ ┣ auth.js
- ┃ ┣ breakpoints.js
- ┃ ┗ showJSON.js
- ┣ .DS_Store
- ┣ App.svelte
- ┣ app.css
- ┣ main.js
- ┗ routes.js
+svelte/
+┣ src/
+┃ ┣ components/
+┃ ┃ ┗ toggleTheme.svelte
+┃ ┣ layout/
+┃ ┃ ┣ Content.svelte
+┃ ┃ ┣ Hamburger.svelte
+┃ ┃ ┣ Header.svelte
+┃ ┃ ┣ Login.svelte
+┃ ┃ ┣ Logo.svelte
+┃ ┃ ┣ Menu.svelte
+┃ ┃ ┗ Sidebar.svelte
+┃ ┣ routes/
+┃ ┃ ┣ Customer.svelte
+┃ ┃ ┣ CustomerSingle.svelte
+┃ ┃ ┣ Home.svelte
+┃ ┃ ┣ NotFound.svelte
+┃ ┃ ┗ Profile.svelte
+┃ ┣ util/
+┃ ┃ ┣ auth.js
+┃ ┃ ┣ breakpoints.js
+┃ ┃ ┗ showJSON.js
+┃ ┣ App.svelte
+┃ ┣ app.css
+┃ ┣ main.js
+┃ ┗ routes.js
+┣ Svelte-Docs.md
+┣ favicon.ico
+┣ index.html
+┣ package-lock.json
+┣ package.json
+┣ postcss.config.js
+┣ readme.md
+┗ vite.config.js
  ```
