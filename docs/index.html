@@ -22,23 +22,24 @@
             height: 100vh;
             padding: 1em;
             background-color: #27272b;
-            color: #d7d7d8;
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
             font-size: 16px;
             line-height: 1.5;
-            /* font-size: 14px; */
-            /* line-height: 22px; */
             color: #d7d7d8;
         }
         
         main {
             padding: 1rem;
-            padding-top: 3rem;
-            width: 500px;
-            max-width: 95vw;
-            margin-inline: auto;
+            padding-top: 0;
+            overflow-y: scroll;
+            max-height: 100vh;
+            padding-top: 50px;
+            overflow-y: scroll;
+            max-height: 100vh;
+            max-width: 100vw;
+            width: 100vw;
         }
         
         h3 code {
@@ -81,27 +82,27 @@
             align-items: center;
         }
         
-        header .link {
+        nav .link {
             /* color: #c9ac57; */
             text-decoration: none;
             font-size: 14px;
             background-color: #2a2a30;
             padding: 6px 15px;
+            margin: 5px;
             border-radius: 5px;
             border: 1px solid #1b1b20;
             cursor: pointer;
         }
         
-        header .svelte {
+        nav .svelte {
             color: hsl(19, 67%, 45%);
         }
         
-        header .api {
+        nav .api {
             color: #8892BF;
-            ;
         }
         
-        header .link:hover,
+        nav .link:hover,
         a:hover {
             filter: brightness(130%);
         }
@@ -128,7 +129,7 @@
             color: #988cca;
             text-shadow: 0px 2px 3px #1b1c1f;
             font-size: 22px;
-            margin: 20px 0px 15px 0px;
+            margin: 0px 0px 15px 0px;
         }
         
         h2 {
@@ -150,19 +151,44 @@
             text-decoration: none;
         }
         
+        #navWrapper {
+            position: relative;
+            top: 3em;
+            width: 150px;
+            background-color: #27272b;
+            display: flex;
+            transition: opacity .5s;
+            align-self: baseline;
+        }
+        
+        nav {
+            max-width: 95vh;
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: baseline;
+            z-index: 0;
+        }
+        
+        .content {
+            display: flex;
+            align-items: center;
+            width: 500px;
+            max-width: 95vw;
+            margin-inline: auto;
+        }
+        
+        .toggleNav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+        
         @media (max-width:600px) {
-            nav {
-                position: fixed;
-                bottom: 0;
-                width: 100vw;
-                background-color: #232327;
-                color: #fff;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-around;
-                align-items: center;
-                z-index: 9;
-                border-bottom: 1px solid #1b1b20;
+            #navWrapper {
+                /* display: none; */
+                z-index: 100;
+                position: absolute;
             }
         }
     </style>
@@ -173,13 +199,6 @@
     <header>
         <div class="wrapper">
             <span class="logo" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/readme.md')">MIA</span>
-            <nav>
-                <span class="link svelte" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/svelte/readme.md')">Svelte</span>
-                <span class="link svelte" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/svelte/Svelte-Docs.md')">Docs</span>
-                <span class="link api" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/mia/readme.md')">API</span>
-                <span class="link api" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/mia/shema.md')">Shema</span>
-                <span class="link api" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/mia/API-Docs.md')">Docs</span>
-            </nav>
             <span class="ghLogo">
                 <a href="https://github.com/KoljaL/mia/">
                     <img src="./img/GitHub.png" alt="GitHub Repo" height="25px">
@@ -187,17 +206,64 @@
             </span>
         </div>
     </header>
-    <main id=main></main>
+    <div class="content">
+
+        <div id="navWrapper">
+            <nav id="navbar">
+                <span class="link svelte" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/svelte/readme.md')">Svelte</span>
+                <span class="link svelte" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/svelte/Svelte-Docs.md')">Docs</span>
+                <span class="link api" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/mia/readme.md')">API</span>
+                <span class="link api" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/mia/shema.md')">Shema</span>
+                <span class="link api" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/mia/API-Docs.md')">Docs</span>
+                <span class="link api" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/mia/API-Docs.md')">Docs</span>
+            </nav>
+        </div>
+        <main id=main></main>
+        <div class="toggleNav">
+            <label onclick="toggleNav()">
+                <?xml version="1.0" ?>
+                <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg height="32px" id="Layer_1" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z" />
+                </svg>
+                <input type="checkbox" style="display:none" name="toggleNav" id="toggleNav">
+            </label>
+        </div>
+    </div>
     <script>
         var md = window.markdownit();
         load('https://raw.githubusercontent.com/KoljaL/mia/main/readme.md')
 
         function load(file) {
-
             fetch(file)
                 .then((response) => response.text())
                 .then((data) => md.render(data))
                 .then((markdown) => document.getElementById('main').innerHTML = markdown)
         }
+
+        function toggleNav() {
+            let navWrapper = document.getElementById('navWrapper');
+            let ckb = document.getElementById('toggleNav');
+            if (ckb.checked) {
+                navWrapper.style.display = 'flex';
+            } else {
+                navWrapper.style.display = 'none';
+
+            }
+        }
     </script>
+
+    <script>
+        // var lastScrollTop;
+        // navbar = document.getElementById('navWrapper');
+        // window.addEventListener('scroll', function() {
+        //     var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        //     if (scrollTop > lastScrollTop) {
+        //         navbar.style.opacity = '0';
+        //     } else {
+        //         navbar.style.opacity = '1';
+        //     }
+        //     lastScrollTop = scrollTop;
+        // });
+    </script>
+
 </body>
