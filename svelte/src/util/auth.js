@@ -14,9 +14,12 @@ export var Avatar = writable(0)
 export const User = writable(0);
 
 
-//
-// set store vars from localStorage after page reload
-//
+/**
+ * title get `User`items from `localStorage`
+ * 
+ * read all items, store them & set `User` -> `true`
+ * so we can reload the page without to logout
+ */
 if (localStorage.getItem('ID') && User !== true) {
     Token.set(localStorage.getItem("Token"));
     ID.set(localStorage.getItem("ID"));
@@ -27,9 +30,16 @@ if (localStorage.getItem('ID') && User !== true) {
 }
 
 
-//
-// User login called in Login.svelte
-//
+/**
+ * User.login(payload, token)
+ * 
+ * sets `ID`, `Role`, `Permission`, `Token` & `Avatar` to `localStorage` and `store`
+ * sets the `store-Item` `User` -> `true`
+ * called by `authUser()` 
+ * 
+ * @param array & string
+ * @return redirect to `/profile`
+ */
 User.login = function(payload, token) {
     // console.log(payload)
     Token = writable(token);
@@ -48,14 +58,13 @@ User.login = function(payload, token) {
 }
 
 /**
- * title test name
- * incl description
+ * User.logout()
+ * 
+ * removes all items from `localStorage` & empties all stores
+ * called in `layout/Menue.svelte`
  * 
  * @return redirect to login form
  */
-//
-// User logout called in Menue.svelte
-//
 User.logout = function() {
     Token.set(false);
     localStorage.removeItem("Token");
@@ -71,9 +80,14 @@ User.logout = function() {
     push('/');
 }
 
-//
-// parse JWT to array and return
-//
+/**
+ * authUser(token)
+ * 
+ * parse JWT to array and calles `User.login()`
+ * 
+ * @param JWT from API
+ * @return array with payload for `User.login()`
+ */
 export const authUser = function(token) {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -86,7 +100,5 @@ export const authUser = function(token) {
         })
         .join('')
     );
-
-    // return JSON.parse(jsonPayload);
     User.login(JSON.parse(jsonPayload), token);
 }

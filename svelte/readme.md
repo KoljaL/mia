@@ -30,3 +30,32 @@ In this way, it is posible to set an unlimited amount of themes & and switching 
 Therefor an attribute is set to the body tag `<body data-theme="theme-dark">` and althougt stored in localStorage. 
 The theme-switch names, function & icon are defined in `./components/toggleTheme.svelte`. 
 In `./app.css` are the custom variables for every theme, they get importet into tailwind inside `./tailwind.config.js`.
+
+```
+src
+ ┣ components
+ ┃ ┗ toggleTheme.svelte
+ ┣ layout
+ ┃ ┣ Content.svelte
+ ┃ ┣ Hamburger.svelte
+ ┃ ┣ Header.svelte
+ ┃ ┣ Login.svelte
+ ┃ ┣ Logo.svelte
+ ┃ ┣ Menu.svelte
+ ┃ ┗ Sidebar.svelte
+ ┣ routes
+ ┃ ┣ Customer.svelte
+ ┃ ┣ CustomerSingle.svelte
+ ┃ ┣ Home.svelte
+ ┃ ┣ NotFound.svelte
+ ┃ ┗ Profile.svelte
+ ┣ util
+ ┃ ┣ auth.js
+ ┃ ┣ breakpoints.js
+ ┃ ┗ showJSON.js
+ ┣ .DS_Store
+ ┣ App.svelte
+ ┣ app.css
+ ┣ main.js
+ ┗ routes.js
+ ```

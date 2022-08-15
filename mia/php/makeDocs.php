@@ -17,7 +17,7 @@ $exclude = array('makeDocs.php', 'config.php','./vendor','adminer');
 $extensions = array('php');
 
 
-run($startfolder, $docfile, $exclude, $extensions);
+// run($startfolder, $docfile, $exclude, $extensions);
 
 
 
@@ -37,7 +37,7 @@ $exclude = array('dist', 'node_modules','public');
 $extensions = array('js','svelte');
 
 
-// run($startfolder, $docfile, $exclude, $extensions);
+run($startfolder, $docfile, $exclude, $extensions);
 
 
 function run($startfolder, $docfile, $exclude, $extensions)
