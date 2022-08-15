@@ -31,7 +31,7 @@ Therefor an attribute is set to the body tag `<body data-theme="theme-dark">` an
 The theme-switch names, function & icon are defined in `./components/toggleTheme.svelte`. 
 In `./app.css` are the custom variables for every theme, they get importet into tailwind inside `./tailwind.config.js`.
 
-```
+```bash
 src
  ┣ components
  ┃ ┗ toggleTheme.svelte
