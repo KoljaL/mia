@@ -8,7 +8,7 @@
 // startfolder (relative)
 $startfolder = '../';
 // name of Docfile
-$docfile = 'API-Docs.md';
+$docfile = './../API-Docs.md';
 
 // files and folders to exclude from scraping
 $exclude = array('makeDocs.php', 'config.php','./vendor','adminer');
@@ -17,7 +17,7 @@ $exclude = array('makeDocs.php', 'config.php','./vendor','adminer');
 $extensions = array('php');
 
 
-// run($startfolder, $docfile, $exclude, $extensions);
+run($startfolder, $docfile, $exclude, $extensions);
 
 
 
@@ -28,7 +28,7 @@ $extensions = array('php');
 // startfolder (relative)
 $startfolder = '../../svelte';
 // name of Docfile
-$docfile = 'Svelte-Docs.md';
+$docfile = './../../svelte/Svelte-Docs.md';
 
 // files and folders to exclude from scraping
 $exclude = array('dist', 'node_modules','public');
