@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mia & Svelte</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.1/markdown-it.min.js" integrity="sha512-SYfDUYPg5xspsG6OOpXU366G8SZsdHOhqk/icdrYJ2E/WKZxPxze7d2HD3AyXpT7U22PZ5y74xRpqZ6A2bJ+kQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+         ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        * {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        body {
+            width: 100vw;
+            height: 100vh;
+            padding: 1em;
+            background-color: #27272b;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            font-size: 16px;
+            line-height: 1.5;
+            color: #d7d7d8;
+        }
+        
+        header {
+            position: fixed;
+            height: 45px;
+            width: 100vw;
+            background-color: #232327;
+            color: #fff;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            z-index: 9;
+            border-bottom: 1px solid #1b1b20;
+        }
+        
+        header .wrapper {
+            width: 600px;
+            max-width: 100vh;
+            margin-inline: auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        
+        header .logo {
+            display: inline-block;
+            margin-left: 1rem;
+            margin-right: 2rem;
+            color: #988cca;
+            text-shadow: 0px 2px 3px #1b1c1f;
+            font-size: 22px;
+            cursor: pointer;
+        }
+        
+        header .ghLogo {
+            position: absolute;
+            right: 1em;
+            top: 10px;
+            width: 25px;
+            height: 25px;
+        }
+        
+        nav {
+            height: 100vh;
+            width: 0;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #232327;
+            border-right: 1px solid black;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+        
+        .showNav nav {
+            width: 120px;
+        }
+        
+        nav span {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+        
+        nav span:hover {
+            color: #f1f1f1;
+        }
+        
+        nav .link {
+            text-decoration: none;
+            font-size: 14px;
+            background-color: #2a2a30;
+            padding: 6px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #1b1b20;
+            cursor: pointer;
+        }
+        
+        nav .svelte {
+            color: hsl(19, 67%, 45%);
+        }
+        
+        nav .api {
+            color: #8892BF;
+        }
+        
+        nav .link:hover,
+        a:hover {
+            filter: brightness(130%);
+        }
+        
+        .openbtn {
+            /* position: fixed;
+            bottom: 0;
+            left: 0; */
+            background: transparent;
+            font-size: 20px;
+            cursor: pointer;
+            fill: #d7d7d8;
+            padding: 10px 15px;
+            border: none;
+        }
+        
+        .openbtn:hover {
+            fill: #f3f3f4;
+        }
+        
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+        
+        h3 code {
+            background-color: #2c2c31;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 14.5px;
+            font-weight: normal;
+            border: 1px solid #1b1b20;
+            letter-spacing: 0.4px;
+        }
+        
+        p strong {
+            color: #cb7832;
+        }
+        
+        p code {
+            color: #6a8759;
+        }
+        
+        h1 {
+            color: #988cca;
+            text-shadow: 0px 2px 3px #1b1c1f;
+            font-size: 22px;
+            margin: 0px 0px 15px 0px;
+        }
+        
+        h2 {
+            font-size: 19px;
+            font-weight: bold;
+            color: #c19c90;
+            margin-top: 55px;
+            margin-bottom: 10px;
+        }
+        
+        h3 {
+            margin-top: 35px;
+            color: #c9ac57;
+            font-size: 15px;
+        }
+        
+        a {
+            color: #2798e4;
+            text-decoration: none;
+        }
+        
+        .content {
+            position: relative;
+            margin-inline: auto;
+            width: 600px;
+            max-width: 100vw;
+        }
+        
+        .showNav #main {
+            width: calc(600px - 120px);
+            max-width: calc(100vw - 120px);
+        }
+        
+        @media screen AND (min-width: 820px) {
+            nav {
+                width: 120px;
+            }
+            #main {
+                position: relative;
+                left: 120px;
+                width: calc(600px - 120px -32px);
+                max-width: calc(100vw - 120px - 32px);
+            }
+            .openbtn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="wrapper">
+            <button class="openbtn" onclick="toggleSidebar()">
+                <svg height="32px" id="Layer_1" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z" />
+                </svg>
+            </button>
+            <span class="logo" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/readme.md')">MIA</span>
+            <span class="ghLogo">
+                <a href="https://github.com/KoljaL/mia/">
+                    <img src="./img/GitHub.png" alt="GitHub Repo" height="25px">
+                </a>
+            </span>
+        </div>
+    </header>
+
+    <div class="content">
+        <nav>
+            <span class="link svelte" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/svelte/readme.md')">Svelte</span>
+            <span class="link svelte" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/svelte/Svelte-Docs.md')">Docs</span>
+            <span class="link api" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/mia/readme.md')">API</span>
+            <span class="link api" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/mia/shema.md')">Shema</span>
+            <span class="link api" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/mia/API-Docs.md')">Docs</span>
+            <span class="link api" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/mia/API-Docs.md')">Docs</span>
+        </nav>
+        <div id="main"></div>
+    </div>
+
+
+
+    <script>
+        var md = window.markdownit();
+        load('https://raw.githubusercontent.com/KoljaL/mia/main/readme.md', false)
+
+        function load(file, closeSidebar = true) {
+            fetch(file)
+                .then((response) => response.text())
+                .then((data) => md.render(data))
+                .then((markdown) => document.getElementById('main').innerHTML = markdown)
+            if (closeSidebar) {
+                // closeNav()
+                toggleSidebar()
+            }
+        }
+
+        function toggleSidebar() {
+            document.body.classList.toggle("showNav");
+        }
+    </script>
+
+</body>

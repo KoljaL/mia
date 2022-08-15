@@ -2,273 +2,328 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="./favicon.ico" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mia & Svelte</title>
+    <link rel="icon" href="./favicon.ico" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.1/markdown-it.min.js" integrity="sha512-SYfDUYPg5xspsG6OOpXU366G8SZsdHOhqk/icdrYJ2E/WKZxPxze7d2HD3AyXpT7U22PZ5y74xRpqZ6A2bJ+kQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <style>
-         ::-webkit-scrollbar {
-            display: none;
-        }
-        
-        * {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        
-        body {
-            width: 100vw;
-            height: 100vh;
-            padding: 1em;
-            background-color: #27272b;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-            font-size: 16px;
-            line-height: 1.5;
-            color: #d7d7d8;
-        }
-        
-        header {
-            position: fixed;
-            height: 45px;
-            width: 100vw;
-            background-color: #232327;
-            color: #fff;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            z-index: 9;
-            border-bottom: 1px solid #1b1b20;
-        }
-        
-        header .wrapper {
-            width: 600px;
-            max-width: 100vh;
-            margin-inline: auto;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        }
-        
-        header .logo {
-            display: inline-block;
-            margin-left: 1rem;
-            margin-right: 2rem;
-            color: #988cca;
-            text-shadow: 0px 2px 3px #1b1c1f;
-            font-size: 22px;
-            cursor: pointer;
-        }
-        
-        header .ghLogo {
-            position: absolute;
-            right: 1em;
-            top: 10px;
-            width: 25px;
-            height: 25px;
-        }
-        
-        nav {
-            height: 100vh;
-            width: 0;
-            position: absolute;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #232327;
-            border-right: 1px solid black;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-        
-        .showNav nav {
-            width: 120px;
-        }
-        
-        nav span {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
-        }
-        
-        nav span:hover {
-            color: #f1f1f1;
-        }
-        
-        nav .link {
-            text-decoration: none;
-            font-size: 14px;
-            background-color: #2a2a30;
-            padding: 6px 15px;
-            margin: 5px;
-            border-radius: 5px;
-            border: 1px solid #1b1b20;
-            cursor: pointer;
-        }
-        
-        nav .svelte {
-            color: hsl(19, 67%, 45%);
-        }
-        
-        nav .api {
-            color: #8892BF;
-        }
-        
-        nav .link:hover,
-        a:hover {
-            filter: brightness(130%);
-        }
-        
-        .openbtn {
-            /* position: fixed;
-            bottom: 0;
-            left: 0; */
-            background: transparent;
-            font-size: 20px;
-            cursor: pointer;
-            fill: #d7d7d8;
-            padding: 10px 15px;
-            border: none;
-        }
-        
-        .openbtn:hover {
-            fill: #f3f3f4;
-        }
-        
-        #main {
-            transition: margin-left .5s;
-            padding: 16px;
-        }
-        
-        h3 code {
-            background-color: #2c2c31;
-            border-radius: 5px;
-            padding: 5px 10px;
-            font-size: 14.5px;
-            font-weight: normal;
-            border: 1px solid #1b1b20;
-            letter-spacing: 0.4px;
-        }
-        
-        p strong {
-            color: #cb7832;
-        }
-        
-        p code {
-            color: #6a8759;
-        }
-        
-        h1 {
-            color: #988cca;
-            text-shadow: 0px 2px 3px #1b1c1f;
-            font-size: 22px;
-            margin: 0px 0px 15px 0px;
-        }
-        
-        h2 {
-            font-size: 19px;
-            font-weight: bold;
-            color: #c19c90;
-            margin-top: 55px;
-            margin-bottom: 10px;
-        }
-        
-        h3 {
-            margin-top: 35px;
-            color: #c9ac57;
-            font-size: 15px;
-        }
-        
-        a {
-            color: #2798e4;
-            text-decoration: none;
-        }
-        
-        .content {
-            position: relative;
-            margin-inline: auto;
-            width: 600px;
-            max-width: 100vw;
-        }
-        
-        .showNav #main {
-            width: calc(600px - 120px);
-            max-width: calc(100vw - 120px);
-        }
-        
-        @media screen AND (min-width: 820px) {
-            nav {
-                width: 120px;
-            }
-            #main {
-                position: relative;
-                left: 120px;
-                width: calc(600px - 120px -32px);
-                max-width: calc(100vw - 120px - 32px);
-            }
-            .openbtn {
-                display: none;
-            }
-        }
-    </style>
+
 </head>
 
 <body>
 
-    <header>
-        <div class="wrapper">
-            <button class="openbtn" onclick="toggleSidebar()">
-                <svg height="32px" id="Layer_1" style="enable-background:new 0 0 32 32;" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z" />
-                </svg>
-            </button>
-            <span class="logo" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/readme.md')">MIA</span>
-            <span class="ghLogo">
-                <a href="https://github.com/KoljaL/mia/">
-                    <img src="./img/GitHub.png" alt="GitHub Repo" height="25px">
-                </a>
-            </span>
-        </div>
-    </header>
-
-    <div class="content">
-        <nav>
-            <span class="link svelte" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/svelte/readme.md')">Svelte</span>
-            <span class="link svelte" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/svelte/Svelte-Docs.md')">Docs</span>
-            <span class="link api" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/mia/readme.md')">API</span>
-            <span class="link api" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/mia/shema.md')">Shema</span>
-            <span class="link api" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/mia/API-Docs.md')">Docs</span>
-            <span class="link api" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/mia/API-Docs.md')">Docs</span>
-        </nav>
-        <div id="main"></div>
-    </div>
-
-
-
-    <script>
-        var md = window.markdownit();
-        load('https://raw.githubusercontent.com/KoljaL/mia/main/readme.md', false)
-
-        function load(file, closeSidebar = true) {
-            fetch(file)
-                .then((response) => response.text())
-                .then((data) => md.render(data))
-                .then((markdown) => document.getElementById('main').innerHTML = markdown)
-            if (closeSidebar) {
-                // closeNav()
-                toggleSidebar()
-            }
-        }
-
-        function toggleSidebar() {
-            document.body.classList.toggle("showNav");
-        }
-    </script>
-
+    <main>
+        <header>
+            <div class="toggleSidebar" onclick="toggleSidebar()"></div>
+            <div class="headerMenu">
+                <span id="homeLink"></span>
+                <span id="headerTitle"></span>
+            </div>
+            <a id="ghLink" href="https://github.com/KoljaL/mia/">
+                <img src="./img/GitHub.png" alt="GitHub Repo" height="25px">
+            </a>
+        </header>
+        <aside></aside>
+        <article></article>
+        <footer></footer>
+    </main>
 </body>
+
+<style>
+     :root {
+        /* layout */
+        --main-width: 800px;
+        --header-height: 50px;
+        --sidebar-width: 200px;
+        --footer-height: 0px;
+        /* bg-color */
+        --header-bg-color: #232327;
+        --sidebar-bg-color: #2c2c31;
+        --page-bg-color: #27272b;
+        --footer-bg-color: #232327;
+        /* font-color */
+        --link-color: #988cca;
+        --text-color: #818181;
+        /* misc */
+        --border: 1px solid #1b1b20;
+    }
+    
+     ::-webkit-scrollbar {
+        display: none;
+    }
+    
+    * {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        box-sizing: border-box;
+    }
+    
+    body {
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--page-bg-color);
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+        font-size: 16px;
+        line-height: 1.5;
+        color: var(--text-color);
+        display: flex;
+        justify-content: center;
+    }
+    
+    main {
+        display: grid;
+        grid-template-columns: var(--sidebar-width) auto;
+        grid-gap: 0;
+        grid-row-gap: 0;
+        width: var(--main-width);
+        max-width: 100vw;
+    }
+    
+    header {
+        grid-column: 1 / 3;
+        height: var(--header-height);
+        display: flex;
+        justify-content: space-between;
+        background: var(--header-bg-color);
+        border-bottom: var(--border);
+    }
+    
+    header .toggleSidebar {
+        display: none;
+        font-size: large;
+    }
+    
+    header .headerMenu {
+        width: 100%;
+    }
+    
+    footer {
+        grid-column: 1 / 3;
+        height: var(--footer-height);
+        display: flex;
+        justify-content: space-between;
+        background: var(--footer-bg-color);
+        border-top: var(--border);
+    }
+    
+    aside,
+    article {
+        height: calc(100vh - var(--header-height) - var(--footer-height));
+    }
+    
+    article {
+        overflow-y: scroll;
+        padding: 1rem;
+    }
+    
+    aside {
+        transition: all .5s;
+        background: var(--sidebar-bg-color);
+        border-right: var(--border);
+    }
+    
+    @media all and (max-width: 800px) {
+        header .toggleSidebar {
+            display: block;
+        }
+        aside {
+            position: absolute;
+            top: var(--header-height);
+            transform: translateX(calc(var(--sidebar-width) * -1));
+            transition: all .5s;
+        }
+        .showSidebar aside {
+            left: 0;
+            width: var(--sidebar-width);
+            transform: translateX(0);
+        }
+        article {
+            grid-column: 1 / 3;
+        }
+    }
+    
+    .toggleSidebar {
+        mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 24 24' stroke='%23FFF' stroke-width='2'><path stroke-linecap='round' stroke-linejoin='round' d='M4 6h16M4 12h16M4 18h16' /></svg>");
+        width: 48px;
+        height: 48px;
+        display: inline-block;
+        background-color: var(--text-color);
+        cursor: pointer;
+    }
+    
+    .showSidebar .toggleSidebar {
+        mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2'><path stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' /></svg>");
+    }
+    
+    .toggleSidebar:hover {
+        filter: brightness(130%);
+    }
+    
+    #homeLink {
+        mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24'><path d='M21.312 12.644c-.972-1.189-3.646-4.212-4.597-5.284l-1.784 1.018 4.657 5.35c.623.692.459 1.704-.376 2.239-.773.497-5.341 3.376-6.386 4.035-.074-.721-.358-1.391-.826-1.948-.469-.557-6.115-7.376-7.523-9.178-.469-.601-.575-1.246-.295-1.817.268-.549.842-.918 1.43-.918.919 0 1.408.655 1.549 1.215.16.641-.035 1.231-.623 1.685l1.329 1.624 7.796-4.446c1.422-1.051 1.822-2.991.93-4.513-.618-1.053-1.759-1.706-2.978-1.706-1.188 0-.793-.016-9.565 4.475-1.234.591-2.05 1.787-2.05 3.202 0 .87.308 1.756.889 2.487 1.427 1.794 7.561 9.185 7.616 9.257.371.493.427 1.119.15 1.673-.277.555-.812.886-1.429.886-.919 0-1.408-.655-1.549-1.216-.156-.629.012-1.208.604-1.654l-1.277-1.545c-.822.665-1.277 1.496-1.377 2.442-.232 2.205 1.525 3.993 3.613 3.993.596 0 1.311-.177 1.841-.51l9.427-5.946c.957-.664 1.492-1.781 1.492-2.897 0-.744-.24-1.454-.688-2.003zm-8.292-10.492c.188-.087.398-.134.609-.134.532 0 .997.281 1.243.752.312.596.226 1.469-.548 1.912l-5.097 2.888c-.051-1.089-.579-2.081-1.455-2.732l5.248-2.686zm-2.374 12.265l.991-2.691.813 1.017-.445 1.433 1.782.238.812 1.015-3.399-.321-.554-.691zm5.481-3.076l.552.691-.99 2.691-.812-1.015.44-1.438-1.778-.232-.812-1.016 3.4.319z' /></svg>");
+        width: 48px;
+        height: 48px;
+        display: inline-block;
+        background-color: var(--link-color);
+        cursor: pointer;
+    }
+    /**
+    * STYLE 
+    */
+    
+    #headerTitle {
+        font-size: 40px;
+        color: var(--text-color);
+    }
+    
+    aside li {
+        list-style: none;
+        text-decoration: none;
+        font-size: 14px;
+        background-color: #2a2a30;
+        padding: 6px 15px;
+        margin: 5px;
+        border-radius: 5px;
+        border: var(--border);
+        cursor: pointer;
+    }
+    
+    li.svelte {
+        color: hsl(19, 67%, 45%);
+    }
+    
+    li.api {
+        color: #8892BF;
+    }
+    
+    aside li:hover,
+    a:hover {
+        filter: brightness(130%);
+    }
+    
+    h3 code {
+        background-color: #2c2c31;
+        border-radius: 5px;
+        padding: 5px 10px;
+        font-size: 14.5px;
+        font-weight: normal;
+        border: 1px solid #1b1b20;
+        letter-spacing: 0.4px;
+    }
+    
+    p strong {
+        color: #cb7832;
+    }
+    
+    p code {
+        color: #6a8759;
+    }
+    
+    h1 {
+        color: #988cca;
+        text-shadow: 0px 2px 3px #1b1c1f;
+        font-size: 22px;
+        margin: 0px 0px 15px 0px;
+    }
+    
+    h2 {
+        font-size: 19px;
+        font-weight: bold;
+        color: #c19c90;
+        margin-top: 55px;
+        margin-bottom: 10px;
+    }
+    
+    h3 {
+        margin-top: 35px;
+        color: #c9ac57;
+        font-size: 15px;
+    }
+    
+    a {
+        color: #2798e4;
+        text-decoration: none;
+    }
+</style>
+<script>
+    const headerTitle = 'Mia';
+    const ghLink = 'https://github.com/KoljaL/mia';
+    const baseURL = 'https://raw.githubusercontent.com/KoljaL/mia/main/';
+    const linkList = [{
+            title: 'Home',
+            url: 'readme.md',
+            class: 'home'
+        }, {
+            title: 'Svelte',
+            url: 'svelte/readme.md',
+            class: 'svelte'
+        }, {
+            title: 'Docs',
+            url: 'svelte/Svelte-Docs.md',
+            class: 'svelte'
+        }, {
+            title: 'API',
+            url: 'mia/readme.md',
+            class: 'api'
+        }, {
+            title: 'Shema',
+            url: 'mia/shema.md',
+            class: 'api'
+        }, {
+            title: 'Docs',
+            url: 'mia/API-Docs.md',
+            class: 'api'
+        },
+
+    ];
+
+    //
+    // LOAD
+    //
+    var md = window.markdownit();
+
+    //
+    // FUNCTIONS
+    //
+
+    function createLinks(linkList) {
+        document.getElementById('ghLink').setAttribute('href', `${ghLink}`)
+        document.getElementById('headerTitle').innerHTML = headerTitle;
+
+        let HTML = '';
+        linkList.forEach(link => {
+            if (link.class === 'home') {
+                load(link.url, false);
+                document.getElementById('homeLink').setAttribute('onclick', `load('${link.url}')`)
+            } else {
+                HTML += `<li class="${link.class}" onclick="load('${link.url}')">${link.title}</li>`;
+            }
+        });
+        document.getElementsByTagName('aside')[0].innerHTML = HTML;
+    }
+
+
+    function load(file, closeSidebar = true) {
+        fetch(baseURL + file)
+            .then((response) => response.text())
+            .then((data) => md.render(data))
+            .then((markdown) => document.getElementsByTagName('article')[0].innerHTML = markdown)
+        if (closeSidebar) {
+            toggleSidebar()
+        }
+    }
+
+    function toggleSidebar() {
+        document.body.classList.toggle("showSidebar");
+    }
+
+    //
+    // RUN
+    //
+    createLinks(linkList)
+</script>
+
+</html>
