@@ -37,7 +37,7 @@
             padding: 1rem;
             padding-top: 3rem;
             width: 500px;
-            max-width: 95vh;
+            max-width: 95vw;
             margin-inline: auto;
         }
         
@@ -76,6 +76,9 @@
             width: 600px;
             max-width: 100vh;
             margin-inline: auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
         }
         
         header .link {
@@ -110,7 +113,6 @@
             color: #988cca;
             text-shadow: 0px 2px 3px #1b1c1f;
             font-size: 22px;
-            margin: 10px 50px 10px 0px;
             cursor: pointer;
         }
         
@@ -147,6 +149,22 @@
             color: #2798e4;
             text-decoration: none;
         }
+        
+        @media (max-width:600px) {
+            nav {
+                position: fixed;
+                bottom: 0;
+                width: 100vw;
+                background-color: #232327;
+                color: #fff;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                z-index: 9;
+                border-bottom: 1px solid #1b1b20;
+            }
+        }
     </style>
 </head>
 
@@ -154,16 +172,18 @@
 
     <header>
         <div class="wrapper">
-            <span class="logo" onclick="load('./../readme.md')">Manual Impulsed Api</span>
-            <span class="link svelte" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/svelte/README.md')">Svelte</span>
-            <span class="link svelte" onclick="load('./md/Svelte-Docs.md')">Docs</span>
-            <span class="link api" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/mia/readme.md')">API</span>
-            <span class="link api" onclick="load('./md/API-Docs.md')">Docs</span>
+            <span class="logo" onclick="load('./../readme.md')">MIA</span>
+            <nav>
+                <span class="link svelte" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/svelte/README.md')">Svelte</span>
+                <span class="link svelte" onclick="load('./md/Svelte-Docs.md')">Docs</span>
+                <span class="link api" onclick="load('https://raw.githubusercontent.com/KoljaL/mia/main/mia/readme.md')">API</span>
+                <span class="link api" onclick="load('./md/API-Docs.md')">Docs</span>
+            </nav>
             <span class="ghLogo">
-        <a href="https://github.com/KoljaL/mia/">
-          <img src="./img/GitHub.png" alt="GitHub Repo" height="25px">
-        </a>
-      </span>
+                <a href="https://github.com/KoljaL/mia/">
+                    <img src="./img/GitHub.png" alt="GitHub Repo" height="25px">
+                </a>
+            </span>
         </div>
     </header>
     <main id=main></main>
