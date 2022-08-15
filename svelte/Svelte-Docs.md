@@ -1,4 +1,4 @@
-# ./../../svelte/Svelte-Docs 
+# svelteSvelte-Docs 
  
 ## svelte/src/util/auth.js
 ###  test name  

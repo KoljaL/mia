@@ -59,13 +59,17 @@ function run($startfolder, $docfile, $exclude, $extensions)
 
 
     // loop for all files
-    $markdown = '# '.str_replace('.md', '', $docfile);
+    $name = str_replace('.md', '', $docfile);
+    $name = str_replace('.', '', $name);
+    $name = str_replace('/', '', $name);
+
+    $markdown = '# '.$name;
     foreach ($files as $file) {
 
         // get php file
         $fileContent = file_get_contents($file);
 
-        // add space to fileContent for regex, why?
+        // add space to fileContent for regex, but why?
         $fileContent = ' '.$fileContent;
 
         $phpDoc = [];
