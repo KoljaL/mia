@@ -34,7 +34,7 @@ $docfile = './../../svelte/Svelte-Docs.md';
 $exclude = array('dist', 'node_modules','public');
 
 // file extensions to scrape
-$extensions = array('js','svelte');
+$extensions = array('js','svelte','html');
 
 
 run($startfolder, $docfile, $exclude, $extensions);

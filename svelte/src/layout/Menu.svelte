@@ -1,21 +1,28 @@
 <script>
-    import ToggleTheme from '../components/toggleTheme.svelte';
-    import { User } from './../util/auth.js';
+  /**
+   * title Menu Bar in Header
+   *
+   * imports the `<toggleTheme>`
+   * calles `User.logout` in `util/auth.js`
+   *
+   */
+  import ToggleTheme from '../components/toggleTheme.svelte';
+  import { User } from './../util/auth.js';
 
-    import Icon from 'svelte-icon';
-    import logout from './../../public/img/evaicons/log-out.svg?raw';
+  import Icon from 'svelte-icon';
+  import logout from './../../public/img/evaicons/log-out.svg?raw';
 </script>
 
 <nav>
-    <ToggleTheme />
-    <div class="icon" on:click={User.logout}><Icon data={logout} size="25px" /></div>
+  <ToggleTheme />
+  <div class="icon" on:click={User.logout}><Icon data={logout} size="25px" /></div>
 </nav>
 
 <style>
-    nav {
-        display: flex;
-        gap: 1rem;
-        padding-right: 1rem;
-        margin: 0;
-    }
+  nav {
+    display: flex;
+    gap: 1rem;
+    padding-right: 1rem;
+    margin: 0;
+  }
 </style>

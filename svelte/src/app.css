@@ -37,13 +37,14 @@
     --bg-prim: #FAFAFA;
     --bg-seco: #F5F5F5;
     --bg-tert: #E3E3E3;
-    --border-prim: #777777;
+    --border-prim: #c2c2c2;
     --border-seco: #dddddf;
     --border-tert: #c9c9cc;
     --success: #007E33;
     --info: #0099CC;
     --warn: #FF8800;
     --error: #CC0000;
+    --shaddow-bottom: 0px 5px 20px 0px rgba(202, 202, 202, 0.5);
 }
 
 [data-theme="theme-dark"] {
@@ -72,6 +73,7 @@
     --info: #c9ac57;
     --warn: #cb7832;
     --error: #e9553b;
+    --shaddow-bottom: 0px 5px 20px 0px rgba(24, 24, 24, 0.5);
 }
 
 

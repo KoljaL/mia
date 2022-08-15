@@ -1,39 +1,38 @@
-// import Customer from './routes/Customer.svelte'
-import NotFound from './routes/NotFound.svelte'
-// import Home from './routes/Home.svelte'
-
+/**
+ * title Routing file
+ * 
+ * loads dynamically the routes
+ */
 
 import { wrap } from 'svelte-spa-router/wrap'
+import NotFound from './routes/NotFound.svelte'
 
 // Export the route definition object
 export default {
-    // '/': Home,
-
     '/': wrap({
         asyncComponent: () =>
             import ('./routes/Home.svelte')
     }),
 
-    // Wrapping the Author component
+    // all customer
     '/customer': wrap({
         asyncComponent: () =>
             import ('./routes/Customer.svelte')
     }),
 
-    // Wrapping the Author component
+    // single customer
     '/customer/:id?': wrap({
         asyncComponent: () =>
             import ('./routes/CustomerSingle.svelte')
     }),
 
-    // Wrapping the Author component
+    // staff / own profile 
     '/profile/:id?': wrap({
         asyncComponent: () =>
             import ('./routes/Profile.svelte')
     }),
 
 
-    // '/customer/:id?': Customer,
-
+    // default route
     '*': NotFound,
 }

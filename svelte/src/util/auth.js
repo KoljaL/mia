@@ -1,3 +1,12 @@
+/**
+ * title Authentication file
+ * 
+ * handles `page reload` without logout, login & logout
+ * the `store` variable `$User` is `true` if the user is logged in
+ * 
+ */
+
+
 // import store & router for redirect after logout
 import { writable } from 'svelte/store';
 import { push, pop, replace } from 'svelte-spa-router';
