@@ -37,12 +37,11 @@ $exclude = array('dist', 'node_modules','public');
 $extensions = array('js','svelte');
 
 
-run($startfolder, $docfile, $exclude, $extensions);
+// run($startfolder, $docfile, $exclude, $extensions);
 
 
 function run($startfolder, $docfile, $exclude, $extensions)
 {
-
 
     // scan for php files
     $files = [];
@@ -58,12 +57,13 @@ function run($startfolder, $docfile, $exclude, $extensions)
     // pprint($files, 'files');
 
 
-    // loop for all files
-    $name = str_replace('.md', '', $docfile);
-    $name = str_replace('.', '', $name);
-    $name = str_replace('/', '', $name);
+    // make name for title
+    $name = explode('/', $docfile);
+    $name = $name[array_key_last($name)];
+    $name = explode('.', $name)[0];
+    $markdown = '# '.$name.PHP_EOL;
 
-    $markdown = '# '.$name;
+    // loop over all $files
     foreach ($files as $file) {
 
         // get php file
@@ -72,6 +72,7 @@ function run($startfolder, $docfile, $exclude, $extensions)
         // add space to fileContent for regex, but why?
         $fileContent = ' '.$fileContent;
 
+        // array for docStrings
         $phpDoc = [];
 
         // remove '<style>...</style>' from file content, because multiline comments in CSS are the same way like docstrings
@@ -85,9 +86,12 @@ function run($startfolder, $docfile, $exclude, $extensions)
         if (!empty($phpDoc[0])) {
             // pprint($phpDoc[0], $file);
 
+            $filename = str_replace('../', '', $file);
+            $filename = str_replace('svelte/', '', $filename);
+
             $markdown .= " ".PHP_EOL;
             $markdown .= " ".PHP_EOL;
-            $markdown .= "## ".str_replace('../', '', $file).PHP_EOL;
+            $markdown .= "## ".$filename.PHP_EOL;
 
             // parse every comment in this file
             foreach ($phpDoc[0] as $k => $v) {
