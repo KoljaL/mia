@@ -1,24 +1,32 @@
 {
-  "name": "node-starter",
-  "version": "0.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
-  },
-  "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "*",
-    "@vitejs/plugin-vue": "^2.2.4",
-    "autoprefixer": "^10.4.2",
-    "postcss": "^8.4.16",
-    "postcss-load-config": "^4.0.1",
-    "svelte-icon": "^1.2.4",
-    "svelte-preprocess": "^4.10.7",
-    "vite": "^2.8.6"
-  },
-  "dependencies": {
-    "@fullhuman/postcss-purgecss": "^4.1.3",
-    "axios": "^0.27.2",
-    "svelte-spa-router": "^3.2.0"
-  }
+    "name": "node-starter",
+    "version": "0.0.0",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "serve": "vite preview",
+        "roll": "rollup -c -w"
+    },
+    "devDependencies": {
+        "@rollup/plugin-node-resolve": "^13.3.0",
+        "@rollup/plugin-replace": "^4.0.0",
+        "@sveltejs/vite-plugin-svelte": "*",
+        "@vitejs/plugin-vue": "^2.2.4",
+        "autoprefixer": "^10.4.2",
+        "dotenv": "^16.0.1",
+        "postcss": "^8.4.16",
+        "postcss-load-config": "^4.0.1",
+        "rollup": "^2.78.0",
+        "rollup-plugin-svelte": "^7.1.0",
+        "svelte": "^3.49.0",
+        "svelte-icon": "^1.2.4",
+        "svelte-preprocess": "^4.10.7",
+        "vite": "^2.8.6"
+    },
+    "dependencies": {
+        "@fullhuman/postcss-purgecss": "^4.1.3",
+        "axios": "^0.27.2",
+        "rollup-plugin-css-only": "^3.1.0",
+        "svelte-spa-router": "^3.2.0"
+    }
 }
