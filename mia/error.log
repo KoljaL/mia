@@ -210,3 +210,11 @@ Stack trace:
 #1 /Applications/MAMP/htdocs/mia/mia/index.php(155): readJWT(NULL)
 #2 {main}
   thrown in /Applications/MAMP/htdocs/mia/mia/vendor/firebase/php-jwt/src/JWT.php on line 90
+[16-Aug-2022 14:24:54 UTC] PHP Warning:  Undefined array key "HTTP_AUTHORIZATION" in /Applications/MAMP/htdocs/mia/mia/index.php on line 153
+[16-Aug-2022 14:24:54 UTC] PHP Warning:  Undefined array key 1 in /Applications/MAMP/htdocs/mia/mia/index.php on line 153
+[16-Aug-2022 14:24:54 UTC] PHP Fatal error:  Uncaught TypeError: Firebase\JWT\JWT::decode(): Argument #1 ($jwt) must be of type string, null given, called in /Applications/MAMP/htdocs/mia/mia/php/functions.php on line 120 and defined in /Applications/MAMP/htdocs/mia/mia/vendor/firebase/php-jwt/src/JWT.php:90
+Stack trace:
+#0 /Applications/MAMP/htdocs/mia/mia/php/functions.php(120): Firebase\JWT\JWT::decode(NULL, Object(Firebase\JWT\Key))
+#1 /Applications/MAMP/htdocs/mia/mia/index.php(155): readJWT(NULL)
+#2 {main}
+  thrown in /Applications/MAMP/htdocs/mia/mia/vendor/firebase/php-jwt/src/JWT.php on line 90

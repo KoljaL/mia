@@ -1,4 +1,7 @@
 <script>
+  // window.process = {
+  //   ...window.process
+  // };
   /**
    * title The first Svelte file
    *
@@ -19,6 +22,12 @@
   import Main from './layout/Content.svelte';
   import Login from './layout/Login.svelte';
 
+  // const isProd = env.isProd;
+  // const apiUrl = __myapp.env.API_URL;
+  // console.log(isProd);
+  // console.log(process);
+  // console.log(window);
+
   /**
    * toggleView()
    *
@@ -30,6 +39,7 @@
   toggleView();
 
   // console.log('User', JSON.stringify($User, null, 2));
+  // console.log(process.env.MY_ENV_VAR)
 </script>
 
 {#if $User}
