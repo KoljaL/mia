@@ -1,7 +1,14 @@
-**/.DS_Store
+# macOS files
 .DS_Store
 .AppleDouble
 .LSOverride
-mia/vendor/*
-mia/config.php
-svelte/node_modules
+
+# composer & npm folder
+vendor
+node_modules
+
+# build folder
+dist
+
+# config files
+config.php
