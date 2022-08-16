@@ -1,6 +1,6 @@
 # macOS files
 .DS_Store
-**.DS_Store
+# **.DS_Store
 .AppleDouble
 .LSOverride
 
@@ -12,4 +12,4 @@ node_modules
 dist
 
 # config files
-config.php 
+config.php  

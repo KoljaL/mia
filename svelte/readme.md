@@ -13,6 +13,7 @@
 - https://www.donielsmith.com/blog/2020-05-11-how-to-use-dotenv-with-svelte-3/
 - https://stackoverflow.com/questions/69762299/how-to-define-environment-variables-in-svelte
 - https://github.com/svelte-brasil/svelte-routify-dotenv-sass-prettier-test
+- https://typeofnan.dev/how-to-set-up-a-svelte-app-with-rollup/
 
 
 ## installed libraries
