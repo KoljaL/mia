@@ -1,5 +1,6 @@
 # macOS files
 .DS_Store
+**.DS_Store
 .AppleDouble
 .LSOverride
 
@@ -8,7 +9,7 @@ vendor
 node_modules
 
 # build folder
-# dist
+dist
 
 # config files
-config.php
+config.php 
