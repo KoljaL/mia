@@ -14,6 +14,9 @@
 - https://stackoverflow.com/questions/69762299/how-to-define-environment-variables-in-svelte
 - https://github.com/svelte-brasil/svelte-routify-dotenv-sass-prettier-test
 - https://typeofnan.dev/how-to-set-up-a-svelte-app-with-rollup/
+- https://stackoverflow.com/questions/68479217/how-to-load-environment-variables-in-svelte-using-vite-or-svite
+## DOTENV for Vite
+- https://vitejs.dev/guide/env-and-mode.html#env-variables
 
 
 ## installed libraries

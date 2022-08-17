@@ -17,6 +17,7 @@
     // let customerID;
 
     // define vars for the functions
+  const API = import.meta.env.VITE_API_PATH;
     let addData = null;
     let customers = [];
     let error = null;
@@ -31,7 +32,7 @@
 
     async function getSingleCustomer(customerID) {
         try {
-            const res = await axios.get('http://localhost:8888/mia/mia/customer/' + customerID, auth);
+            const res = await axios.get(API+'customer/' + customerID, auth);
             customers = res.data.data;
         } catch (e) {
             error = e;

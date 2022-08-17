@@ -1,5 +1,9 @@
 <?php
 
+// print_r($_GET);
+// exit;
+
+
 //
 // preflight for CORS
 // https://github.com/mikecao/flight/issues/425

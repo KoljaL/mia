@@ -1,3 +1,28 @@
+# RewriteEngine Off
+
+# RewriteRule ^/?tour.* / [P]
+
+# RewriteCond %{REQUEST_URI} ^/mia/
+# RewriteRule ^svelte/distx [R=301,L]
+
+
+# RewriteRule ^index\.php$ - [L] 
+# RewriteRule    ^$ svelte/dist/    [L]
+# RewriteRule    (.*) svelte/dist/$1 [L]
+
+
+# RewriteBase /mia/
+
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteRule [^/]$ %{REQUEST_URI}/ [L,R=301,NE]
+
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^(.*)$ ?arg=$1 [L,QSA]
+
+
+
+
 # <IfModule mod_rewrite.c>
 #    RewriteEngine on
 #    # RewriteRule    ^$ svelte/dist/    [L]

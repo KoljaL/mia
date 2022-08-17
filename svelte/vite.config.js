@@ -6,6 +6,4 @@ export default defineConfig({
         // purge: ["./index.html", './src/**/*.{svelte,js,ts}']
         // preprocess: [svelte_preprocess()],
     })],
-    publicDir: './src/assets',
-
 });

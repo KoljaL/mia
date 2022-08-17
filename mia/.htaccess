@@ -1,11 +1,34 @@
 RewriteEngine on
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ ./index.php?path=$1 [NC,L,QSA]
 
-
+#
+# send auth to PHP
+#
 RewriteCond %{HTTP:Authorization} ^(.+)$
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+#
+# rewrite path (endpoint/value) to parameter
+#
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ ./index.php?path=$1 [L,QSA] 
+
+
+# Allow mod_dir to serve index.html when requesting the directory
+# DirectoryIndex index.html
+
+
+# Front-controller (exclude static resources)
+# RewriteRule ^index\.html$ - [L]
+# RewriteCond %{REQUEST_URI} !^/(assets|css|img|js|modules|partials|vendor)/
+# RewriteRule . index.html [L]
+
+
+
+
+#
+# try to win against CORS
+#
 
 #  <IfModule mod_headers.c>
 #    Header set Access-Control-Allow-Origin "*"

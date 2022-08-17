@@ -12,6 +12,7 @@
   import axios from 'axios';
   import { authUser } from './../util/auth.js';
 
+  const API = import.meta.env.VITE_API_PATH;
   let password = 'admin';
   let email = 'mail@example.com';
 
@@ -21,7 +22,7 @@
   async function APIlogin() {
     axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
     axios
-      .post('http://localhost:8888/mia/mia/login', {
+      .post(API + 'login', {
         email: email,
         password: password
       })

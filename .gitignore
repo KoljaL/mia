@@ -13,3 +13,4 @@ dist
 
 # config files
 config.php  
+.env.production
