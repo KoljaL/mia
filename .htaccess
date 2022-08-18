@@ -1,6 +1,58 @@
-# RewriteEngine Off
+# that works
+# RewriteRule ^(/.*)?$ svelte/dist$1 [L,NC]
+# 
 
-# RewriteRule ^/?tour.* / [P]
+# enable apache rewrite engine
+RewriteEngine on
+ 
+RewriteRule ^(/.*)?$ svelte/dist$1 [L,NC]
+
+# rewrite css files to their actual path
+RewriteRule ^css/(.+\.css)$ svelte/dist/$1 [L,NC]
+
+# rewrite js files to their actual path
+RewriteRule ^js/(.+\.js)$ svelte/dist/$1 [L,NC]
+
+# write root to public/
+RewriteRule ^$ / [L]
+
+RewriteRule ^(?!svelte/dist/).* /$0 [L,NC]
+
+
+
+# RewriteRule (.*) mia/index.php?url=$1 [END]
+
+## direct a root call to the template
+# RewriteRule ^$ svelte/dist/index.html [L]
+ 
+# Deliver the folder or file directly if it exists on the server
+# RewriteCond %{REQUEST_URI} !(.*)/$
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# Push every request to api.php
+# RewriteRule ^(.+)$ php/api.php [QSA]
+ 
+
+# Options +FollowSymLinks -MultiViews
+# Turn mod_rewrite on
+# RewriteBase /
+
+# Rewrite static resources
+# RewriteCond %{DOCUMENT_ROOT}/subfolder/public/$1 -f
+# RewriteRule (.+) subfolder/public/$1 [L]
+
+# Rewrite everything else to the "public" directory
+# RewriteRule .* /svelte/dist/ [L]
+
+
+# RewriteRule .* svelte/dist/ [L]
+
+# RewriteCond %{REQUEST_URI} ^/.  
+# RewriteRule ^(.*)$ /svelte/dist [P] 
+
+
+# RewriteRule ^$ svelte/dist [L]
+# RewriteRule ^/?tour.* / [P] 
 
 # RewriteCond %{REQUEST_URI} ^/mia/
 # RewriteRule ^svelte/distx [R=301,L]

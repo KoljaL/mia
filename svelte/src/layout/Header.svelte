@@ -10,6 +10,9 @@
   import Menu from './Menu.svelte';
 </script>
 
+<svelte:head>
+  <title>Über</title>
+</svelte:head>
 <header>
   <nav class="flex">
     <!-- <Hamburger /> -->

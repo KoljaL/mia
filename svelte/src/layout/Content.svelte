@@ -8,9 +8,11 @@
    */
   import Router from 'svelte-spa-router';
   import routes from './../routes';
+  const prefix = '/mis/svelte/dist/';
 </script>
 
 <main>
+  <!-- <Router {routes} {prefix} /> -->
   <Router {routes} />
 </main>
 
